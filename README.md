@@ -1,2 +1,2 @@
 # Obsidian-site
-[Notes here](https://github.com/Martin-FTW/Obsidian-site/notes/MOC.md)
+[Notes here](https://martin-ftw.github.io/Obsidian-site/notes/moc.html)
