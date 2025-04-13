@@ -1,520 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Obsidian notes]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib\media\favicon.png</url><title>Obsidian notes</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Thu, 03 Apr 2025 15:51:41 GMT</lastBuildDate><atom:link href="lib\rss.xml" rel="self" type="application/rss+xml"/><pubDate>Thu, 03 Apr 2025 15:40:48 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[MATLAB]]></title><description><![CDATA[ 
- <br><br>pi i j inf ans 
-<br><br>+ - * / ^
-=
-<br><br>sin(x) cos(x) tan(x) sec(x) cot(x) csc(x) asin(x) acos(x) atan(x) 
-sinh(x) cosh(x) tanh(x) asinh(x) acosh(x) atanh(x) 
-exp(x) log(x) log10(x) log2(x) sqrt(x)
-abs(z) angle(z) conj(z) real(z) imag(z)
-round(x) floor(x) ceil(x) fix(x)
-mod(a,m)==floor(a/m)*m % a mod m
-factorial(n) nchoosek(n,k)
-<br><br>
-<br>Valid variable names must start with letter, contain only letter,digit,underscores, and cannot be a reserved keyword
-<br>Case sensitive
-<br><br>a = [a1, a2, a3]<br>
-A = [a11, a12; a21, a22]<br>
-a(i) <br>
-a([i1, i2, i3]) <br>
-A(i,j) <br>
-A([i1, i2], [j1, j2, j3]) <br>
-end  the last index<br>
-:  [1,...,end]<br>
-<br>Assignment of multiple elements work as long as dimensions match
-
-<br>a(j)=[] removes the entry 
-<br>A(:,j)=[] removes the -th column
-
-
-<br>Whenever possible, MATLAB will extend the array size in order to assign an object there<br>
-a = [1,...,10] and a(20)=20 will give you a 1x20 array
-<br><br>zeros(m,n) ones(m,n) eye(m,n)
-zeros(n) ones(n) eye(n) magic(n) hilb(n)
-diag(v,k)
-diag(A,k)
-tril(A,k)
-triu(A,k)
-
-start:step:stop  % arithmetic sequence from &lt;start&gt; to &lt;stop&gt; inclusive with &lt;step&gt; as common difference
-linspace(start,stop,step)  % array of num evenly spaced points from start to stop inclusive
-[X,Y] = meshgrid(x,y)  % X is length(y) rows of x and Y is length(x) many columns of y. More precisely: X_ij=x_j,  Y_ij=y_i, size(X)=(length(x),length(y)), size(Y)=(length(y),length(x))
-
-length(v)
-size(A)
-numel(A)
-
-repelem(v,k)
-repelem(v,[k1,...,kn])
-repelem(A,m,n)
-repmat(A,m,n)
-repmat(A,n)
-
-fliplr(A) flipud(A) 
-rot90(A,k)
-
-paddata(A,m)
-trimdata(A,m)
-resize(A,m)
-reshape(A,sz)  (must have prod(sz)=numel(A), use [] on one arguement to auto-calculate dimension)
-
-blkdiag(A1,...,An)
-horzcat(A1,...,An) == [A1,...,An]
-vertcat(A1,...,An) == [A1;...;An]
-
-dot(v,w)
-cross(v,w)
-
-A+B A-B A.*B A./B  % pointwise
-A+v A-v A.*v A./v  % each row/column of A will do the operation with v pointwise
-A+a A-a A.*a A./a  % each entry of A will do the operation with a pointwise
-a*A  % scalar multiplication
-A*B  % matrix multiplication, requires matching dimensions, alt: mtimes(A,B)
-A^n  % matrix power, requires square matrix, alt: mpower(A,n)
-A^(1/2)  % matrix square root, alt: sqrtm(A)
-A.'  % transpose, alt: transpose(A)
-A'  % conjugate transpose, alt: ctranspose(A)
-A\B  % solves AX=B, alt: mldivide(A,B))
-A/B  % solves YB=A, alt: mrdivide(A,B)
-linsolve(A,B)  % solves AX=B
-expm(A)
-logm(A)
-det(A)
-trace(A)
-inv(A)
-adjoint(A)  % classical adjoint
-rref(A)
-rank(A)
-null(A)  % orthonormal basis for null space
-null(A,'r')  % rational orthonormal basis
-orth(A)  % orthonormal basis for column space
-spy(A)  % visualize the pattern of nonzero entries of A
-
-
-v = eig(A)  % vector of eigenvalues of A
-[V,D] = eig(A)  % diagonalization
-eigs(A)  % vector of eigenvalues of A ordered by descending absolute values
-eigs(A,k)  % first k elements of eigs(A)
-v = svd(A)  % vector of singular values of A
-[U,D,V] = svd(A)  % singular value decomposition
-norm(A)  % spectral norm max(svd(A))
-cond(A)  % conditional number max(svd(A))/min(svd(A))
-
-[V,D] = eig(A)  % D=inv(V)AV if diagonalizable
-[L,U,P] = lu(A)  % PA=LU
-[Q,R] = qr(A)  % A=QR
-[Q,R,P] = qr(A)  % PA=QR
-U = chol(A)  % A=U'U
-L = chol(A,'lower')  % A=LL'
-[U,D,V] = svd(A)  % A=UVD'
-
-istril(A)
-istriu(A)
-isdiag(A)
-issymmetric(A)
-ishermitian(A)
-
-<br>Most functions in <a data-href="#Math functions" href="about:blank#Math_functions" class="internal-link" target="_self" rel="noopener nofollow">Math functions</a> works on arrays pointwisely<br><br>diary mydiary
-diary off
-diary on
-type diary
-
-clear  % clears all variable
-clear var % clears the variable var
-who  % list all variables
-who a* % list variable starting with a
-whos % list all variable names, size, type
-whos var % list the name, size, type of var
-<br><br>
-<br>int8, int16, int32, int64 (signed integers, )
-<br>uint8, uint16, uint32, uint64 (unsigned integers: )
-<br>single (32bit decimal)
-<br>double (64bit decimal, default type) 
-<br>true, false
-<br>char
-<br>a string is an array of char<br><br>disp(a) disp(v) disp('str')
-[str1, str2, ...] % concatenates strings
-{str1, str2, ...} % multiline string
-&lt;dtype&gt;(&lt;var&gt;)  % converts var into type dtype
-num2str(&lt;num&gt;)
-logical(&lt;num&gt;)  % true iff num is nonzero
-logical(&lt;arr&gt;)  % true iff all entries are true
-% logical('') and logical([]) return false
-% logical(NaN) throws an error
-any(v)  % true if at least one true
-any(A)  % returns row vector of any() of columns of A, that is [any(A1), any(A2),...]
-all(v)  % true if all entries true
-all(A)  % returns row vector of all() of columns of A, that is [all(A1), all(A2),...]
-
-&lt; &lt;= &gt; &gt;= == ~=  &amp; relational operator
-&amp;&amp; || ~  &amp; logical operator
-
-v==a  % returns an array w with w_i=(v_i==a)
-A==B  % returns an matrix C with C_ij=(A_ij==B_ij)
-isequal(A,B) or logical(A==B) % returns true when A=B as matrices
-logical(A~=B)  % returns true when any entry is different
-~isequal(A,B) or ~logical(A==B)  % returns true when A not equal B as matrices
-
-find(v)  % returns all true entries
-find(v,n)  % returns the first n true entries
-find(v,n,'last')  % returns the last n true entries
-find(v==0)  % true entries of v==0, i.e. all zero entries
-find(v&gt;1)  % etc.
-
-if cond1  % forces logical(cond1) if var is not true/false
-	statement1a;
-	statement1b;
-elseif cond2
-	statement2a;
-	statement2b;
-else
-	statement3a;
-	statement3b
-end
-
-for k = &lt;arr&gt;
-	statement1;
-	statement2;
-end
-
-for &lt;cond&gt;
-	statement1;
-	statement2;
-end
-<br><br>plot(x,y,linespec) % plots y against x given size(x)=size(y)
-plot(x1,y1,linespec1,x2,y2,linespec2,...) % for multiple curves in same graph
-plot(X,Y)==plot(X(:,1),Y(:,1),X(:,2),Y(:,2),...) % plots columns of Y against columns of X
-plot(y,linespec) % plots y against 1:length(y)
-plot(Y) % plots columns of Y against 1:length(y)
-plot(z) % plot Im(z) against Re(z)
-quiver(X,Y,V,W)  % vector field, draws arrows from (X_ij, Y_ij) to ((X+V)_ij, (Y+W)_ij)
-
-With the same syntax as above, we have:
-loglog(x,y)  % log y against log x
-semilogx(x,y)  % y against log x
-semilogy(x,y)  % log y against x
-polarplot(theta,r)  % polar
-fill(x,y,&lt;color&gt;) % fill polygon (convex hull)
-bar(x,y) % bar graph, bar(y) gives one bar per element
-barh(x,y) % horizontal bar graph
-pie(x,{'label1','label2',...}) % pie chart, labels optional
-
-
-Curve template:
-t = linspace()
-x = f(t)
-y = g(x)
-plot(x, y)
-
-Vector field template: 
-x = linspace()
-y = linspace()
-[X,Y] = meshgrid(x,y)
-V = f(X,Y)
-W = g(X,Y)
-quiver(X,Y,V,W)
-
-Plot options:  % Put after the plot(x,y) command
-axis([a,b,c,d])  
-% or xlim([a,b]);ylim([c,d])
-% or axis square/equal
-xlabel('x')
-ylabel('y')
-title('Title')
-text(&lt;pos_x&gt;,&lt;pos_y&gt;,{'text', 'multiline'})
-legend('y=f(x)')
-grid on/off
-box on/off
-
-Line properties:  % replace plot(x,y) with this
-plot(x, y, 'ro:', ...
-	'LineWidth',3, ...
-	'MarkerEdgeColor','k', ...
-	'MarkerFaceColor',[.49 1 .63],...
-	'MarkerSize',12)
-
-Text options:  % replace any text function with this
-legend('y=f(x)',...
-	'FontSize', 16,...
-	'FontWeight', 'bold',...
-	'Color', 'r')
-
-Holding: % plots multiple in one graph
-hold on
-plot(...)
-plot(...)
-hold off
-
-Figures:
-fig = figure(n) % Initialize n-th figure window, automatically generates n if no args given
-plot(...) % plot on n-th figure window
-figure(n) % shows n-th figure window (if defined)
-saveas(fig, 'name', 'png')
-close n % close figure n window
-close all
-
-Subplot:
-figure
-subplot(m,n,1); plot(...)
-subplot(m,n,2); plot(...)
-subplot(m,n,[3,4]); plot(...)
-<br><br>plot3(x,y,z)  % joins the points (x_i, y_i, z_i)
-text(x(i), y(i), z(i), 'i-th point') % useful label
-mesh(X,Y,Z)  % parametric surface of z_ij as height function of (x_ij,y_ij)
-surf(X,Y,Z)  % mesh but solid face colors
-bar3(Z)  % 3D bar graph
-barh3(Z)  % 3D horizontal bar graph
-stem3(x,y,z)
-ribbon(t,z)
-waterfall(Z)
-
-
-3D curve template:
-t = linspace()
-x = f(t)
-y = g(t)
-z = h(t)
-plot3(x,y,z)
-
-3D surface template:
-u = linspace()
-v = linspace()
-[U,V] = meshgrid(u,v)
-X = f(U,V)
-Y = g(U,V)
-Z = h(U,V)
-mesh(X,Y,Z)
-
-Plot options:  % Put after the plot command
-axis([a,b,c,d,e,f])  
-% or xlim([a,b]);ylim([c,d]);zlim([e,f]) 
-% or axis square/equal
-xlabel('x')
-ylabel('y')
-zlabel('z')
-title('Title')
-text(&lt;pos_x&gt;,&lt;pos_y&gt;,{'text', 'multiline'})
-legend('y=f(x)')
-grid on/off
-box on/off
-view(&lt;azimuth&gt;, &lt;elevation&gt;)  % azimute = angle from -y axis to proj onto xy-plane, elevation = angle from xy plane to z axis
-% below are for surfaces only 
-shading &lt;shade&gt; % options: flat,faceted,interp  
-colormap &lt;map&gt;  % options: default,parula,turbo,hsv,hot,cool,spring,summer,autumn,winter,gray,bone,copper,pink,sky,abyss,jet,lines,colorcube,prism,flag,white
-colorbar
-
-Line properties:
-plot3(x, y, z, ...
-	'LineWidth',3, ...
-	'MarkerEdgeColor','k', ...
-	'MarkerFaceColor',[.49 1 .63],...
-	'MarkerSize',12)
-
-Surface properties:
-mesh(X,Y,Z, 'LineStyle', '--',...
-	'FaceColor', 'y',... 
-	'FaceAlpha', 1)
-
-Text properties:
-legend('y=f(x)',...
-	'FontSize', 16,...
-	'FontWeight', 'bold',...
-	'Color', 'r')
-
-
-]]></description><link>coding\matlab.html</link><guid isPermaLink="false">Coding/MATLAB.md</guid><pubDate>Wed, 19 Feb 2025 18:06:19 GMT</pubDate></item><item><title><![CDATA[MATLAB Symbolic Math Toolbox]]></title><description><![CDATA[ 
- <br><br>sym(A)
-
-Now suppose A is a symbolic matrix
-
-colspace(A)  % basis for column space
-null(A)  % basis for null space
-]]></description><link>coding\matlab-symbolic-math-toolbox.html</link><guid isPermaLink="false">Coding/MATLAB Symbolic Math Toolbox.md</guid><pubDate>Sun, 26 Jan 2025 08:13:59 GMT</pubDate></item><item><title><![CDATA[Python]]></title><description><![CDATA[ 
- <br><br>a = [a0, a1, a2]<br>
-a[i]<br>a.append(element)
-a.insert(index, element)
-a+b  # list concatenation
-<br><br>d = {'key1':val1, 'key2': val2} d['key1'] val1<br>list(d.keys())
-list(d.values())
-d['key_new'] = ['new', 'value']  # adds new entry
-del d['key']  # deletes existing entry
-]]></description><link>coding\python.html</link><guid isPermaLink="false">Coding/Python.md</guid><pubDate>Sat, 22 Feb 2025 16:47:57 GMT</pubDate></item><item><title><![CDATA[Python matplotlib]]></title><description><![CDATA[ 
- <br><br>import matplotlib.pyplot as plt
-plt.plot(x,y,linespec)  # plots y against x given size(x)=size(y)
-plt.scatter(x,y,color='r',marker='x')  # plots points (x_n,y_n) given size(x)=size(y)
-plt.hist(x, bins=&lt;num&gt;)  # histogram
-
-plt.savefig('name.png')  # saves figure as file
-
-Curve template:
-t = linspace()
-x = f(t)
-y = g(x)
-plot(x, y)
-
-Scatter template:
-p = np.array([[x1,y1],[x2,y2],[x3,y3]])
-plt.scatter(p[:,0],p[:,1],color='b',marker='o')
-
-Plot options:  % put after the plt.plot(x,y) command
-plt.xlim([a,b])
-plt.ylim([c,d])
-plt.xlabel('x')
-plt.ylabel('y')
-plt.title('Title')
-plt.legend()  # legend with variable name
-# plt.legend(loc='best')  gives best location
-
-Subplot:
-fig = plt.figure(figsize=[a,b])  # inches
-fig.add_subplot(m,n,1); plt.plot(...)
-fig.add_subplot(m,n,2); plt.plot(...)
-fig.add_subplot(m,n,[3,4]); plt.plot(...)
-<br><br>from mpl_toolkits.mplot3d import Axes3D
-u = linspace()
-v = linspace()
-(U,V) = np.meshgrid(u,v)
-X = f(U,V)
-Y = g(U,V)
-Z = h(U,V)
-mesh(X,Y,Z)
-fig = plt.figure()
-ax = Axes3D(fig)
-ax.plot_surface(X,Y,Z)
-ax.set_xlabel('x')
-ax.set_ylabel('y')
-ax.set_zlabel('z')
-]]></description><link>coding\python-matplotlib.html</link><guid isPermaLink="false">Coding/Python matplotlib.md</guid><pubDate>Sat, 22 Feb 2025 09:58:34 GMT</pubDate></item><item><title><![CDATA[Python numpy]]></title><description><![CDATA[ 
- <br><br>import numpy as np
-v = np.array(list)  # turns list into a numpy array
-v[[0,1]]  # first 2 entries
-v[start:stop]  # not including &lt;stop&gt;
-v[start:]  # until last entry
-v[:end]  # from the first entry
-v[:]  # all entries
-
-A = np.array([1,0],[0,1])  # 2D array is matrix
-A[i,j]  # returns i,j entry, zero-indexed
-A[[i1,i2],[j1,j2,j3]]  # etc.
-A[:,j]  # j-th column **AS AN ARRAY**, not column vector
-A[i,:]  # i-th row
-
-A.shape  # returns the dimension of the array, use A.shape[0/1] for row/col
-v.dtype  # returns the datatype
-v.astype(int)  # converts datatypes
-<br><br>import numpy as np
-np.random.rand()  # random number from uniform distribution
-np.random.randn(n)  # array of n random numbers
-np.zeros((2,3,4))  # 2x4x3 array of zeros
-np.ones((3,2))  # 3x2 array of zeros
-np.arange(n)  # same as np.array(range(n))
-np.linspace(start,stop,num)
-
-
-np.vstack((A,B))
-np.hstack((A,B))
-
-np.reshape(m,n)  # mxn matrix
-
-A+B A-B A*B A/B A**B  # pointwise
-np.sqrt(A) np.exp(A) np.log(A) np.abs(A) np.sign(A)  # pointwise
-A@B = np.dot(A,B)  # matrix multipication
-
-A.T = A.transpose() = np.transpose(A)  # transpose
-A.real  # real part
-A.sum() = np.sum(A)  # sum of entries
-A.min() = np.min(A)  # min of entries
-A.max() = np.max(A)  # max of entries
-A.std() = np.std(A)  # standard deviation
-A.mean() = np.mean(A)  # mean of all entries
-A.mean(axis=k)  # take mean of k-th index (outermost)
-A.mean(axis=0)  # array of means of columns
-A.mean(axis=1)  # array of means of rows
-
-from numpy.linalg import inv
-inv(A) = np.linalg.inv(A) # inverts matrix
-
-from numpy.linalg import norm
-norm(v) = np.linalg.norm(v) # 2-norm
-
-]]></description><link>coding\python-numpy.html</link><guid isPermaLink="false">Coding/Python numpy.md</guid><pubDate>Tue, 18 Feb 2025 13:39:37 GMT</pubDate></item><item><title><![CDATA[Python pandas]]></title><description><![CDATA[ 
- <br><br>import pandas as pd
-vals = np.array(...)  # the values of the dataframe
-rows = [1,2,3,4]  # row names
-cols = ['a', 'b', 'c', 'd']  # column names
-df = pd.DataFrame(vals, index=rows, columns=cols)  # generates the dataframe
-
-data = {'a':[...], 'b':[...], 'c':[...]}
-df = pd.DataFrame(data)  # generates the dataframe with [0,1,2,...] as row names and data.keys() as column names
-df = pd.Dataframe(data, columns=['a','c'],index=[1,2,3,4])
-
-df = pd.read_csv('name.csv',sep=';')
-df = pd.read_csv('name.csv',delimiter='\t')
-df = pd.read_excel('name.xlsx')
-
-Now consider:
-df = pd.DataFrame({
-	'color': ['red','yellow'], 
-	'size': ['small', 'large']})
-df_onehot = pd.get_dummies(df)  # performs one-hot encoding
-# columns include color_red, color_yellow, size_small, size_large
-df_onecol = pd.get_dummies(df, columns=['color']) # performs one-hot encoding on some columns
-# columns include color_red, color_yellow
-
-df_all = pd.Dataframe.join(df1, df2)  # concatenates two dataframes
-<br><br>import pandas as pd
-
-df['key'] = df.key  # gives the column named "key"
-df.loc[i]  # gives the row named "i"
-
-
-display(df)  # displays the dataframe
-df.describe()  # gives a statistical summary, including count, mean, std, min, LQ, median, UQ, max
-df.head()  # gives first 5 rows only
-df.plot()  # plots the dataframe, each column against the row index
-df.plot.bar()  # bar graph
-<br><br>import pandas as pd
-
-df.dropna()  # deletes NaN entries
-df.fillna(num)  # converts all NaN to num\
-df.fillna({'col1':10, 'col2':20})  # converts all NaN in col1 to 10 etc.
-df.fillna(method='ffill')  # forward fill: progagates last valid data point
-df.fillna(method='bfill')  # backward fill: use next valid data point
-df.drop_duplicates()
-]]></description><link>coding\python-pandas.html</link><guid isPermaLink="false">Coding/Python pandas.md</guid><pubDate>Mon, 24 Feb 2025 18:43:43 GMT</pubDate></item><item><title><![CDATA[Python scikit-learn]]></title><description><![CDATA[ 
- <br><br>from sklearn.linear_model import LinearRegression
-X = &lt;data&gt;  # NO column of ones!
-y = &lt;targets&gt;
-model = LinearRegression()
-model.fit(X,y)
-m = model.coef_  # array([theta1, theta2, ...])
-c = model.intercept_  # theta0
-model.predict(X_new)
-model.predict([...])  # can pointwise perdict an array of test data
-
-from sklearn.linear_model import Ridge
-model = Ridge()
-model.fit(X,y) ...
-<br><br>Goal: rescale the features by  in order to avoid the zig-zag problem in a skewed problem during gradient descent<br>from sklearn.preprocessing import StandardScaler
-X = &lt;data&gt;
-y = &lt;targets&gt;
-X_scaler = StandardScaler()
-X_scaled = X_scaler.fit_transform(X)  # compute the mean and std of X then rescale X
-&lt;build model&gt;
-X_new = &lt;input&gt;
-X_new_scaled = X_scaler.transform(X_new)  # rescale X_new using the same mean and std before
-model.predict(X_new_scaled)
-<br><br>from sklearn.model_selection import train_test_split
-x_train,x_test,y_train,y_test = train_test_split(data, target)
-# reserves 25% of data for testing
-<br><br>frmo sklearn.metrics import mean_squared_error
-mean_squard_error(y,y_pred)
-y_mean = np.mean(y)*np.ones(len(y))
-coef_det = mean_squared_error(y_pred,y_mean)/mean_squared_error(y,y_mean)  # coefficient of determination
-<br><br>from sklearn.datasets import load_iris
-iris_dataset = load_iris()
-iris_dataset.keys()  # ['data', 'target', 'target_names', 'DESCR', 'feature_names', 'filename']
-iris_df = pd.DataFrame(iris_dataset['data'], columns=iris_database.feature_names)
-]]></description><link>coding\python-scikit-learn.html</link><guid isPermaLink="false">Coding/Python scikit-learn.md</guid><pubDate>Mon, 24 Feb 2025 18:43:43 GMT</pubDate></item><item><title><![CDATA[0-1 loss]]></title><description><![CDATA[ 
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Obsidian notes]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib\media\favicon.png</url><title>Obsidian notes</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Sun, 13 Apr 2025 19:21:15 GMT</lastBuildDate><atom:link href="lib\rss.xml" rel="self" type="application/rss+xml"/><pubDate>Sun, 13 Apr 2025 19:18:13 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[0-1 loss]]></title><description><![CDATA[ 
  <br>Consider a <a data-href="Supervised learning" href="math\supervised-learning.html" class="internal-link" target="_self" rel="noopener nofollow">Supervised learning</a> problem.<br>
 The <a data-tooltip-position="top" aria-label="Supervised learning" data-href="Supervised learning" href="math\supervised-learning.html" class="internal-link" target="_self" rel="noopener nofollow">loss function</a>  is called the 0-1 loss function.<br>
 Note that <br>
@@ -527,12 +11,30 @@ Note that <br>
 Suppose  solves .<br>
 Then  on , i.e. <br><br>Let  and .<br>
 Suppose  solves .<br>
-Then  on , i.e. ]]></description><link>math\abel&apos;s-theorem-for-lode.html</link><guid isPermaLink="false">Math/Abel&apos;s theorem for LODE.md</guid><pubDate>Wed, 05 Feb 2025 06:50:43 GMT</pubDate></item><item><title><![CDATA[absolute loss]]></title><description><![CDATA[ 
+Then  on , i.e. ]]></description><link>math\abel's-theorem-for-lode.html</link><guid isPermaLink="false">Math/Abel's theorem for LODE.md</guid><pubDate>Wed, 05 Feb 2025 06:50:43 GMT</pubDate></item><item><title><![CDATA[absolute loss]]></title><description><![CDATA[ 
  <br>Consider a <a data-href="Supervised learning" href="math\supervised-learning.html" class="internal-link" target="_self" rel="noopener nofollow">Supervised learning</a> problem with output space .<br>
 The <a data-tooltip-position="top" aria-label="Supervised learning" data-href="Supervised learning" href="math\supervised-learning.html" class="internal-link" target="_self" rel="noopener nofollow">loss function</a>  is called the absolute loss function.<br>
 Note that<br>
 <br>
-]]></description><link>math\absolute-loss.html</link><guid isPermaLink="false">Math/absolute loss.md</guid><pubDate>Sun, 02 Mar 2025 07:11:34 GMT</pubDate></item><item><title><![CDATA[accumulation point]]></title><description><![CDATA[ 
+]]></description><link>math\absolute-loss.html</link><guid isPermaLink="false">Math/absolute loss.md</guid><pubDate>Sun, 02 Mar 2025 07:11:34 GMT</pubDate></item><item><title><![CDATA[absolutely continuous random variable]]></title><description><![CDATA[ 
+ <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
+Let  be a <a data-tooltip-position="top" aria-label="random element" data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">random variable</a>.<br>
+Let  be the <a data-tooltip-position="top" aria-label="cumulative distribution function" data-href="cumulative distribution function" href="math\cumulative-distribution-function.html" class="internal-link" target="_self" rel="noopener nofollow">CDF</a> for .<br>
+We call  an absolutely continuous random variable if TFES hold:<br>
+<br> has a <a data-href="probability density function" href="math\probability-density-function.html" class="internal-link" target="_self" rel="noopener nofollow">probability density function</a>
+<br> is <a data-href="absolutely continuous" href="absolutely continuous" class="internal-link" target="_self" rel="noopener nofollow">absolutely continuous</a>
+<br> s.t. 
+<br> s.t. 
+<br> s.t. 
+<br>In this case, the function  is the <a data-href="probability density function" href="math\probability-density-function.html" class="internal-link" target="_self" rel="noopener nofollow">probability density function</a> for .<br>Note that <br>
+<br>
+<br>
+<br>the <a data-tooltip-position="top" aria-label="cumulative distribution function" data-href="cumulative distribution function" href="math\cumulative-distribution-function.html" class="internal-link" target="_self" rel="noopener nofollow">CDF</a> is given by 
+<br>the <a data-href="expectation" href="math\expectation.html" class="internal-link" target="_self" rel="noopener nofollow">expectation</a> is 
+<br>If  then 
+<br> by <a data-href="Change of variables#Pushforward" href="math\change-of-variables.html#Pushforward" class="internal-link" target="_self" rel="noopener nofollow">Change of variables &gt; Pushforward</a>
+<br>
+]]></description><link>math\absolutely-continuous-random-variable.html</link><guid isPermaLink="false">Math/absolutely continuous random variable.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[accumulation point]]></title><description><![CDATA[ 
  <br><br>
 <br>
 <br>
@@ -622,10 +124,10 @@ Suppose  is simple closed and  is meromorphic on  with <br>
 ]]></description><link>math\arzela-ascoli-theorems.html</link><guid isPermaLink="false">Math/Arzela-Ascoli theorems.md</guid><pubDate>Sat, 15 Feb 2025 09:47:46 GMT</pubDate></item><item><title><![CDATA[Arzela's theorem]]></title><description><![CDATA[ 
  <br>Let  be open and bounded and .<br>
 Suppose  is <a data-href="sequentially precompact" href="math\sequentially-precompact.html" class="internal-link" target="_self" rel="noopener nofollow">sequentially precompact</a>.<br>
-Then  is <a data-href="uniformly bounded" href="math\uniformly-bounded.html" class="internal-link" target="_self" rel="noopener nofollow">uniformly bounded</a> and <a data-href="equicontinuous" href="math\equicontinuous.html" class="internal-link" target="_self" rel="noopener nofollow">equicontinuous</a>.]]></description><link>math\arzela&apos;s-theorem.html</link><guid isPermaLink="false">Math/Arzela&apos;s theorem.md</guid><pubDate>Sat, 15 Feb 2025 09:47:39 GMT</pubDate></item><item><title><![CDATA[Ascoli's theorem]]></title><description><![CDATA[ 
+Then  is <a data-href="uniformly bounded" href="math\uniformly-bounded.html" class="internal-link" target="_self" rel="noopener nofollow">uniformly bounded</a> and <a data-href="equicontinuous" href="math\equicontinuous.html" class="internal-link" target="_self" rel="noopener nofollow">equicontinuous</a>.]]></description><link>math\arzela's-theorem.html</link><guid isPermaLink="false">Math/Arzela's theorem.md</guid><pubDate>Sat, 15 Feb 2025 09:47:39 GMT</pubDate></item><item><title><![CDATA[Ascoli's theorem]]></title><description><![CDATA[ 
  <br>Let  be open and bounded and .<br>
 Suppose  is uniformly bounded and equicontinuous.<br>
-Then  is sequentially precompact.]]></description><link>math\ascoli&apos;s-theorem.html</link><guid isPermaLink="false">Math/Ascoli&apos;s theorem.md</guid><pubDate>Sat, 15 Feb 2025 09:47:18 GMT</pubDate></item><item><title><![CDATA[asymmetric relation]]></title><description><![CDATA[ 
+Then  is sequentially precompact.]]></description><link>math\ascoli's-theorem.html</link><guid isPermaLink="false">Math/Ascoli's theorem.md</guid><pubDate>Sat, 15 Feb 2025 09:47:18 GMT</pubDate></item><item><title><![CDATA[asymmetric relation]]></title><description><![CDATA[ 
  <br>Let  be a set and  be a <a data-href="relation" href="math\relation.html" class="internal-link" target="_self" rel="noopener nofollow">relation</a> on .<br>
 We call  asymmetric if <br>
 <br> if  then not 
@@ -794,7 +296,7 @@ Then<br>
 ]]></description><link>math\basic-properties-of-subspace-topology.html</link><guid isPermaLink="false">Math/Basic properties of subspace topology.md</guid><pubDate>Thu, 20 Feb 2025 18:08:14 GMT</pubDate></item><item><title><![CDATA[Bernoulli distribution]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
 Let  and .<br>
-Let  be a <a data-href="discrete random variable" href="math\discrete-random-variable.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random variable</a>.<br>
+Let  be a <a data-href="discrete random element" href="math\discrete-random-element.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random element</a>.<br>
 We write  if TFES hold:<br>
 <br>
 <br>
@@ -805,7 +307,7 @@ Note that <br>
 <br>the notation suggests it is the <a data-href="Binomial distribution" href="math\binomial-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Binomial distribution</a> with  trial
 <br>any  is called a Bernoulli trial with probability of success 
 <br>
-]]></description><link>math\bernoulli-distribution.html</link><guid isPermaLink="false">Math/Bernoulli distribution.md</guid><pubDate>Sun, 09 Mar 2025 14:44:37 GMT</pubDate></item><item><title><![CDATA[Bernoulli ODE]]></title><description><![CDATA[ 
+]]></description><link>math\bernoulli-distribution.html</link><guid isPermaLink="false">Math/Bernoulli distribution.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[Bernoulli ODE]]></title><description><![CDATA[ 
  <br>Solve: , <br>
 Let .<br>
 Then we have the first order linear ODE in : <br>
@@ -867,9 +369,9 @@ Then , where<br>
 ]]></description><link>math\bilinear-forms-and-quadratic-forms.html</link><guid isPermaLink="false">Math/Bilinear forms and quadratic forms.md</guid><pubDate>Tue, 31 Dec 2024 17:28:04 GMT</pubDate></item><item><title><![CDATA[Binomial distribution]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
 Let  and .<br>
-Let  be a <a data-href="discrete random variable" href="math\discrete-random-variable.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random variable</a>.<br>
+Let  be a <a data-href="discrete random element" href="math\discrete-random-element.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random element</a>.<br>
 We write  if  for <br>
-In this case,  is said to follow the Binomial distribution with parameters .<br>Let  be the <a data-tooltip-position="top" aria-label="cumulative distribution function" data-href="cumulative distribution function" href="math\cumulative-distribution-function.html" class="internal-link" target="_self" rel="noopener nofollow">CDF</a> of  and  be the <a data-tooltip-position="top" aria-label="discrete random variable" data-href="discrete random variable" href="math\discrete-random-variable.html" class="internal-link" target="_self" rel="noopener nofollow">PMF</a> of .<br>
+In this case,  is said to follow the Binomial distribution with parameters .<br>Let  be the <a data-tooltip-position="top" aria-label="cumulative distribution function" data-href="cumulative distribution function" href="math\cumulative-distribution-function.html" class="internal-link" target="_self" rel="noopener nofollow">CDF</a> of  and  be the <a data-tooltip-position="top" aria-label="discrete random element" data-href="discrete random element" href="math\discrete-random-element.html" class="internal-link" target="_self" rel="noopener nofollow">PMF</a> of .<br>
 Note that<br>
 <br>Canonical model:  by the <a data-href="Multi-index notation" href="math\multi-index-notation.html" class="internal-link" target="_self" rel="noopener nofollow">Multi-index notation</a> 
 <br>when ,  is the <a data-href="Bernoulli distribution" href="math\bernoulli-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Bernoulli distribution</a>
@@ -882,7 +384,7 @@ Note that<br>
 
 
 <br>
-]]></description><link>math\binomial-distribution.html</link><guid isPermaLink="false">Math/Binomial distribution.md</guid><pubDate>Thu, 06 Mar 2025 14:15:37 GMT</pubDate></item><item><title><![CDATA[Borel set]]></title><description><![CDATA[ 
+]]></description><link>math\binomial-distribution.html</link><guid isPermaLink="false">Math/Binomial distribution.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[Borel set]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
 We call  the Borel sigma-algebra of .<br>
 Elements of  are called Borel sets.<br>In particular, the following are all Borel sets:<br>
@@ -973,7 +475,7 @@ Suppose each  is <a data-href="compact" href="math\compact.html" class="internal
 Then .<br><br>Let  be a  <a data-href="complete metric space" href="math\complete-metric-space.html" class="internal-link" target="_self" rel="noopener nofollow">complete metric space</a>.<br>
 Let  be a sequence of decreasing closed sets.<br>
 Suppose .<br>
-Then  is a singleton.]]></description><link>math\cantor&apos;s-intersection-theorem.html</link><guid isPermaLink="false">Math/Cantor&apos;s intersection theorem.md</guid><pubDate>Thu, 20 Feb 2025 14:37:56 GMT</pubDate></item><item><title><![CDATA[Capacity control]]></title><description><![CDATA[ 
+Then  is a singleton.]]></description><link>math\cantor's-intersection-theorem.html</link><guid isPermaLink="false">Math/Cantor's intersection theorem.md</guid><pubDate>Thu, 20 Feb 2025 14:37:56 GMT</pubDate></item><item><title><![CDATA[Capacity control]]></title><description><![CDATA[ 
  <br>Consider <a data-href="Empirical risk minimization" href="math\empirical-risk-minimization.html" class="internal-link" target="_self" rel="noopener nofollow">Empirical risk minimization</a>.<br>
 As , the empirical risk tends to .<br>
 So the model fits the data very well, yet fails to predict new data.<br>
@@ -1593,13 +1095,14 @@ We call  comeagre if TFES hold:<br>
 <br><br>
 <br>
 <br>
-<br><br>
-<br>
 <br>
 <br><br>
 <br>
 <br>
-]]></description><link>math\common-taylor-series.html</link><guid isPermaLink="false">Math/Common Taylor series.md</guid><pubDate>Fri, 14 Mar 2025 16:09:14 GMT</pubDate></item><item><title><![CDATA[compact]]></title><description><![CDATA[ 
+<br><br>
+<br>
+<br>
+]]></description><link>math\common-taylor-series.html</link><guid isPermaLink="false">Math/Common Taylor series.md</guid><pubDate>Thu, 03 Apr 2025 17:14:23 GMT</pubDate></item><item><title><![CDATA[compact]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
 We call  compact if every <a data-tooltip-position="top" aria-label="cover" data-href="cover" href="math\cover.html" class="internal-link" target="_self" rel="noopener nofollow">open cover</a> of  has a finite subcover, i.e.<br>
 <br> s.t.  finite 
@@ -1810,7 +1313,7 @@ If  is holomorophic on  then<br>
 <br> is upper triangular with complex entries
 <br>,  is unitary,  is upper triangular
 <br> orthonormal basis  for  s.t.  is upper triangular
-]]></description><link>math\complex-schur&apos;s-theorem-for-matrices.html</link><guid isPermaLink="false">Math/Complex Schur&apos;s theorem for matrices.md</guid><pubDate>Sat, 15 Feb 2025 10:06:48 GMT</pubDate></item><item><title><![CDATA[conditional expectation]]></title><description><![CDATA[ 
+]]></description><link>math\complex-schur's-theorem-for-matrices.html</link><guid isPermaLink="false">Math/Complex Schur's theorem for matrices.md</guid><pubDate>Sat, 15 Feb 2025 10:06:48 GMT</pubDate></item><item><title><![CDATA[conditional expectation]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
 Let  be a <a data-tooltip-position="top" aria-label="random element" data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">random variable</a>.<br>
 Let  be a <a data-tooltip-position="top" aria-label="random element" data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">random variable</a>.<br>
@@ -1843,20 +1346,74 @@ We have<br>
 
 
 ]]></description><link>math\conditional-probability.html</link><guid isPermaLink="false">Math/conditional probability.md</guid><pubDate>Wed, 05 Mar 2025 09:47:37 GMT</pubDate></item><item><title><![CDATA[Conjugate gradient method]]></title><description><![CDATA[ 
- <br>Consider the iterative scheme <br>
-Goal: Choose optimal time step  and optimal search direction such that  for all <br>
-Let  be the inner product given by the bilinear form induce by <br>
+ <br>Let  be differentiable.<br>
+Goal: minimize <br>
+Consider the <a data-href="iterative scheme" href="math\iterative-scheme.html" class="internal-link" target="_self" rel="noopener nofollow">iterative scheme</a> <br>
+In conjugate gradient, we attempt to choose the optimal time step  and optimal search direction <br>
+The choice is inspired by <a data-href="Conjugate gradient method on quadratic form" href="math\conjugate-gradient-method-on-quadratic-form.html" class="internal-link" target="_self" rel="noopener nofollow">Conjugate gradient method on quadratic form</a>, where  is a constant (matrix) function.<br>Conjugate gradient method
+Given  and tolerance <br>
 Initialize  and <br>
-Then for each <br>
-<br>Compute , where  
+For :
+
 <br>Compute 
-<br>Compute , where 
-<br>Then <br>
+<br>Compute ,
+
+<br>where 
+
+
+<br>Compute 
+<br>Compute 
+
+<br>where 
+
+
+
+<br>Recall the <a data-tooltip-position="top" aria-label="iterative scheme" data-href="iterative scheme" href="math\iterative-scheme.html" class="internal-link" target="_self" rel="noopener nofollow">error</a> and <a data-tooltip-position="top" aria-label="iterative scheme" data-href="iterative scheme" href="math\iterative-scheme.html" class="internal-link" target="_self" rel="noopener nofollow">residual</a> in <a data-href="Optimization" href="math\optimization.html" class="internal-link" target="_self" rel="noopener nofollow">Optimization</a>, given by<br>
+<br>
+<br>
+<br>
+<br>
+]]></description><link>math\conjugate-gradient-method.html</link><guid isPermaLink="false">Math/Conjugate gradient method.md</guid><pubDate>Sat, 12 Apr 2025 14:29:02 GMT</pubDate></item><item><title><![CDATA[Conjugate gradient method on quadratic form]]></title><description><![CDATA[ 
+ <br>Let <br>
+Note that we have<br>
+<br> by  symmetric
+<br> is the Hessian matrix of 
+<br>We construct the <a data-href="Conjugate gradient method" href="math\conjugate-gradient-method.html" class="internal-link" target="_self" rel="noopener nofollow">Conjugate gradient method</a> to minimize <br>Let  be the inner product given by the bilinear form induce by <br>
+For , we call them -conjugates if <br><br>Now consider the following algorithm inspired by <a data-href="#Lemma" href="about:blank#Lemma" class="internal-link" target="_self" rel="noopener nofollow">Lemma</a><br>Conjugate gradient method
+Given  and tolerance <br>
+Initialize  and <br>
+For :
+
+<br>Compute ,
+
+<br>where 
+
+
+<br>Compute 
+<br>Compute 
+
+<br>where 
+
+
+
+<br>Then , we have<br>
+<br>
+<br>
+<br>
+<br>Hence<br>
 <br> for all 
-<br> for all 
-<br> for all 
-<br> converges to the solution  in less than or equal to  iterations
-]]></description><link>math\conjugate-gradient-method.html</link><guid isPermaLink="false">Math/Conjugate gradient method.md</guid><pubDate>Sat, 15 Feb 2025 08:39:53 GMT</pubDate></item><item><title><![CDATA[connex relation]]></title><description><![CDATA[ 
+<br>By <a data-href="#Lemma" href="about:blank#Lemma" class="internal-link" target="_self" rel="noopener nofollow">Lemma</a>,  in less than or equal to  iterations
+<br><br>Suppose we have some  s.t.  for <br>
+Then<br>
+<br> is linearly independent
+<br>The following iterative scheme solves  given any 
+
+<br>
+<br>
+<br>
+
+
+]]></description><link>math\conjugate-gradient-method-on-quadratic-form.html</link><guid isPermaLink="false">Math/Conjugate gradient method on quadratic form.md</guid><pubDate>Sat, 12 Apr 2025 14:28:47 GMT</pubDate></item><item><title><![CDATA[connex relation]]></title><description><![CDATA[ 
  <br>Let  be a set and  be a <a data-href="relation" href="math\relation.html" class="internal-link" target="_self" rel="noopener nofollow">relation</a> on .<br>
 We call  connex if<br>
 <br> if  then ( or )
@@ -1975,21 +1532,27 @@ Furthermore, if , then we have ]]></description><link>math\convergence-of-infini
 <a data-href="smooth" href="math\smooth.html" class="internal-link" target="_self" rel="noopener nofollow">smooth</a>
 
 <br>
-<a data-href="Gradient characterization of strongly convex" href="Gradient characterization of strongly convex" class="internal-link" target="_self" rel="noopener nofollow">Gradient characterization of strongly convex</a>
+<a data-href="Gradient conditions for convex" href="math\gradient-conditions-for-convex.html" class="internal-link" target="_self" rel="noopener nofollow">Gradient conditions for convex</a>
 
 <br>
-<a data-href="Hessian characterization of strongly convex" href="Hessian characterization of strongly convex" class="internal-link" target="_self" rel="noopener nofollow">Hessian characterization of strongly convex</a>
+<a data-href="Subgradient conditions for strongly convex" href="Subgradient conditions for strongly convex" class="internal-link" target="_self" rel="noopener nofollow">Subgradient conditions for strongly convex</a>
 
 <br>
-<a data-href="Gradient characterization of smooth" href="Gradient characterization of smooth" class="internal-link" target="_self" rel="noopener nofollow">Gradient characterization of smooth</a>
+<a data-href="Gradient conditions for strongly convex" href="Gradient conditions for strongly convex" class="internal-link" target="_self" rel="noopener nofollow">Gradient conditions for strongly convex</a>
 
 <br>
-<a data-href="Hessian characterization of smooth" href="Hessian characterization of smooth" class="internal-link" target="_self" rel="noopener nofollow">Hessian characterization of smooth</a>
+<a data-href="Hessian conditions of strongly convex" href="Hessian conditions of strongly convex" class="internal-link" target="_self" rel="noopener nofollow">Hessian conditions of strongly convex</a>
+
+<br>
+<a data-href="Gradient conditions of smooth" href="Gradient conditions of smooth" class="internal-link" target="_self" rel="noopener nofollow">Gradient conditions of smooth</a>
+
+<br>
+<a data-href="Hessian conditions of smooth" href="Hessian conditions of smooth" class="internal-link" target="_self" rel="noopener nofollow">Hessian conditions of smooth</a>
 
 <br>
 <a data-href="Summary of characterizations of convexity properties" href="Summary of characterizations of convexity properties" class="internal-link" target="_self" rel="noopener nofollow">Summary of characterizations of convexity properties</a>
 
-]]></description><link>math\convex-analysis.html</link><guid isPermaLink="false">Math/Convex analysis.md</guid><pubDate>Sun, 30 Mar 2025 18:39:07 GMT</pubDate></item><item><title><![CDATA[convex function]]></title><description><![CDATA[ 
+<br>]]></description><link>math\convex-analysis.html</link><guid isPermaLink="false">Math/Convex analysis.md</guid><pubDate>Sat, 05 Apr 2025 04:40:52 GMT</pubDate></item><item><title><![CDATA[convex function]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="vector space" href="vector space" class="internal-link" target="_self" rel="noopener nofollow">vector space</a> over .<br>
 Let  be a <a data-href="convex set" href="math\convex-set.html" class="internal-link" target="_self" rel="noopener nofollow">convex set</a>.<br>
 Let <br>
@@ -2112,96 +1675,15 @@ Then  (<a data-tooltip-position="top" aria-label="probability distribution" data
  <br>Let  be sets.<br>
 Let  be a function.<br>
 The function  is called the curried function of  for .<br>Define  by <br>
-The function  is called the currying function on .]]></description><link>math\currying.html</link><guid isPermaLink="false">Math/Currying.md</guid><pubDate>Thu, 20 Mar 2025 10:04:20 GMT</pubDate></item><item><title><![CDATA[Decision theory]]></title><description><![CDATA[<a class="tag" href="?query=tag:incomplete" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#incomplete</a> 
- <br>
+The function  is called the currying function on .]]></description><link>math\currying.html</link><guid isPermaLink="false">Math/Currying.md</guid><pubDate>Thu, 20 Mar 2025 10:04:20 GMT</pubDate></item><item><title><![CDATA[de Moivre-Laplace limit theorem]]></title><description><![CDATA[ 
+ <br>Let .<br>
+Let  follow the <a data-href="Binomial distribution" href="math\binomial-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Binomial distribution</a><br>
+Let  be standard normal.<br>
+Then  with , we have<br>
 <br>
-<a data-href="Supervised learning" href="math\supervised-learning.html" class="internal-link" target="_self" rel="noopener nofollow">Supervised learning</a>
-
-<br><a data-href="0-1 loss" href="math\0-1-loss.html" class="internal-link" target="_self" rel="noopener nofollow">0-1 loss</a>
-<br><a data-href="square loss" href="math\square-loss.html" class="internal-link" target="_self" rel="noopener nofollow">square loss</a>
-<br><a data-href="absolute loss" href="math\absolute-loss.html" class="internal-link" target="_self" rel="noopener nofollow">absolute loss</a>
-<br><a data-href="Hamming loss" href="math\hamming-loss.html" class="internal-link" target="_self" rel="noopener nofollow">Hamming loss</a>
-
-
+<br>In order to use this normal approximation, since  is discrete, it is common to do a continuity correction before using the normal distribution:<br>
 <br>
-<br>
-<a data-href="Risks" href="math\risks.html" class="internal-link" target="_self" rel="noopener nofollow">Risks</a>
-
-<br>
-<a data-href="Capacity control" href="math\capacity-control.html" class="internal-link" target="_self" rel="noopener nofollow">Capacity control</a>
-
-<br>
-<a data-href="random design" href="math\random-design.html" class="internal-link" target="_self" rel="noopener nofollow">random design</a>
-
-<br>
-<a data-href="fixed design" href="math\fixed-design.html" class="internal-link" target="_self" rel="noopener nofollow">fixed design</a>
-
-<br>
-<a data-href="Linear regression model" href="math\linear-regression-model.html" class="internal-link" target="_self" rel="noopener nofollow">Linear regression model</a>
-
-<br><a data-href="Ordinary least squares" href="math\ordinary-least-squares.html" class="internal-link" target="_self" rel="noopener nofollow">Ordinary least squares</a>
-
-<br><a data-href="Fixed-OLS" href="math\fixed-ols.html" class="internal-link" target="_self" rel="noopener nofollow">Fixed-OLS</a>
-<br><a data-href="Random-OLS" href="math\random-ols.html" class="internal-link" target="_self" rel="noopener nofollow">Random-OLS</a>
-
-
-<br><a data-href="Ridge least squares" href="math\ridge-least-squares.html" class="internal-link" target="_self" rel="noopener nofollow">Ridge least squares</a>
-
-<br><a data-href="Fixed-RLS" href="math\fixed-rls.html" class="internal-link" target="_self" rel="noopener nofollow">Fixed-RLS</a>
-
-
-<br><a data-href="Gradient descent on quadratic form" href="math\gradient-descent-on-quadratic-form.html" class="internal-link" target="_self" rel="noopener nofollow">Gradient descent on quadratic form</a>
-<br><a data-href="coefficient of determination" href="math\coefficient-of-determination.html" class="internal-link" target="_self" rel="noopener nofollow">coefficient of determination</a>
-
-
-<br>
-<a data-href="Convexification for binary classification" href="math\convexification-for-binary-classification.html" class="internal-link" target="_self" rel="noopener nofollow">Convexification for binary classification</a>
-
-<br>
-<a data-href="margin-based loss function" href="math\margin-based-loss-function.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based loss function</a>
-
-<br><a data-href="margin-based 0-1 loss" href="math\margin-based-0-1-loss.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based 0-1 loss</a>
-<br><a data-href="margin-based square loss" href="math\margin-based-square-loss.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based square loss</a>
-<br><a data-href="margin-based logistic loss" href="math\margin-based-logistic-loss.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based logistic loss</a>
-<br><a data-href="margin-based hinge loss" href="math\margin-based-hinge-loss.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based hinge loss</a>
-<br><a data-href="margin-based squared hinge loss" href="math\margin-based-squared-hinge-loss.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based squared hinge loss</a>
-<br><a data-href="margin-based exponential loss" href="math\margin-based-exponential-loss.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based exponential loss</a>
-
-
-<br>
-<a data-href="convex surrogate" href="math\convex-surrogate.html" class="internal-link" target="_self" rel="noopener nofollow">convex surrogate</a>
-
-<br><br>
-<br><a data-href="Empirical risk minimization" href="math\empirical-risk-minimization.html" class="internal-link" target="_self" rel="noopener nofollow">Empirical risk minimization</a>
-
-<br><a data-href="estimation error" href="math\estimation-error.html" class="internal-link" target="_self" rel="noopener nofollow">estimation error</a>
-
-<br><a data-href="uniform deviation" href="math\uniform-deviation.html" class="internal-link" target="_self" rel="noopener nofollow">uniform deviation</a>
-<br><a data-href="empirical optimization error" href="math\empirical-optimization-error.html" class="internal-link" target="_self" rel="noopener nofollow">empirical optimization error</a>
-
-
-<br><a data-href="approximation error" href="math\approximation-error.html" class="internal-link" target="_self" rel="noopener nofollow">approximation error</a>
-
-
-<br><a data-href="Rademacher complexity" href="math\rademacher-complexity.html" class="internal-link" target="_self" rel="noopener nofollow">Rademacher complexity</a>
-
-<br><a data-href="Properties of Rademacher complexity" href="math\properties-of-rademacher-complexity.html" class="internal-link" target="_self" rel="noopener nofollow">Properties of Rademacher complexity</a>
-<br><a data-href="Massart's lemma" href="math\massart's-lemma.html" class="internal-link" target="_self" rel="noopener nofollow">Massart's lemma</a> <a href=".?query=tag:incomplete" class="tag" target="_blank" rel="noopener nofollow">#incomplete</a> 
-<br><a data-href="Symmetrization of Rademacher complexity" href="math\symmetrization-of-rademacher-complexity.html" class="internal-link" target="_self" rel="noopener nofollow">Symmetrization of Rademacher complexity</a>
-
-
-<br><a data-href="Contraction principle for short maps" href="math\contraction-principle-for-short-maps.html" class="internal-link" target="_self" rel="noopener nofollow">Contraction principle for short maps</a>
-<br><br>
-<br><a data-href="SPSD kernel" href="math\spsd-kernel.html" class="internal-link" target="_self" rel="noopener nofollow">SPSD kernel</a>
-<br><a data-href="reproducing kernel" href="math\reproducing-kernel.html" class="internal-link" target="_self" rel="noopener nofollow">reproducing kernel</a>
-<br><a data-href="reproducing kernel Hilbert space" href="math\reproducing-kernel-hilbert-space.html" class="internal-link" target="_self" rel="noopener nofollow">reproducing kernel Hilbert space</a>
-
-<br><a data-href="Representer theorem" href="math\representer-theorem.html" class="internal-link" target="_self" rel="noopener nofollow">Representer theorem</a>
-<br><a data-href="Moore-Aronszajn theorem" href="math\moore-aronszajn-theorem.html" class="internal-link" target="_self" rel="noopener nofollow">Moore-Aronszajn theorem</a>
-<br><a data-href="Basic properties of SPSD kernel" href="math\basic-properties-of-spsd-kernel.html" class="internal-link" target="_self" rel="noopener nofollow">Basic properties of SPSD kernel</a>
-
-
-]]></description><link>math\decision-theory.html</link><guid isPermaLink="false">Math/Decision theory.md</guid><pubDate>Thu, 20 Mar 2025 10:04:20 GMT</pubDate></item><item><title><![CDATA[dense]]></title><description><![CDATA[ 
+]]></description><link>math\de-moivre-laplace-limit-theorem.html</link><guid isPermaLink="false">Math/de Moivre-Laplace limit theorem.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[dense]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
 Let .<br>
 We call  dense in  if TFES hold:<br>
@@ -2412,17 +1894,17 @@ For each step, the computational cost of  is<br>
 <br>Hence .<br>
 Thus <br>
 By induction, .<br>
-Hence the order of growth is ]]></description><link>math\discrete-fourier-transform.html</link><guid isPermaLink="false">Math/Discrete Fourier Transform.md</guid><pubDate>Wed, 12 Feb 2025 11:21:56 GMT</pubDate></item><item><title><![CDATA[discrete random variable]]></title><description><![CDATA[ 
+Hence the order of growth is ]]></description><link>math\discrete-fourier-transform.html</link><guid isPermaLink="false">Math/Discrete Fourier Transform.md</guid><pubDate>Wed, 12 Feb 2025 11:21:56 GMT</pubDate></item><item><title><![CDATA[discrete random element]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
 Let  be a <a data-href="measurable space" href="math\measurable-space.html" class="internal-link" target="_self" rel="noopener nofollow">measurable space</a>.<br>
 Let  be a <a data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">random element</a>.<br>
-We call  discrete if  is countable.<br>In this case, the function  is called the probability mass function of , or the PMF of .<br>Note that <br>
+We call  discrete if  is countable.<br>In this case, the function  is the <a data-tooltip-position="top" aria-label="probability density function" data-href="probability density function" href="math\probability-density-function.html" class="internal-link" target="_self" rel="noopener nofollow">probability mass function</a> for .<br>Note that <br>
 <br>
 <br>the <a data-tooltip-position="top" aria-label="cumulative distribution function" data-href="cumulative distribution function" href="math\cumulative-distribution-function.html" class="internal-link" target="_self" rel="noopener nofollow">CDF</a> is given by 
 <br>the <a data-href="expectation" href="math\expectation.html" class="internal-link" target="_self" rel="noopener nofollow">expectation</a> is 
 <br> by <a data-href="Change of variables#Pushforward" href="math\change-of-variables.html#Pushforward" class="internal-link" target="_self" rel="noopener nofollow">Change of variables &gt; Pushforward</a>
 <br>
-]]></description><link>math\discrete-random-variable.html</link><guid isPermaLink="false">Math/discrete random variable.md</guid><pubDate>Sun, 09 Mar 2025 14:45:59 GMT</pubDate></item><item><title><![CDATA[discrete topology]]></title><description><![CDATA[ 
+]]></description><link>math\discrete-random-element.html</link><guid isPermaLink="false">Math/discrete random element.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[discrete topology]]></title><description><![CDATA[ 
  <br>Let  be a set.<br>
  is called the discrete toplogy on .<br>
 <br>Every subset is clopen in 
@@ -2472,7 +1954,7 @@ The disjoint union topology is defined by TFES:<br>
 Let . (or )<br>
 Suppose <br>
 Then <br>
-i.e. <br>If  where  is a Lebesgue measurable set in , then the above  can be chosen s.t.  is compact]]></description><link>math\egorov&apos;s-theorem.html</link><guid isPermaLink="false">Math/Egorov&apos;s theorem.md</guid><pubDate>Mon, 24 Mar 2025 16:19:14 GMT</pubDate></item><item><title><![CDATA[elementary family of sets]]></title><description><![CDATA[ 
+i.e. <br>If  where  is a Lebesgue measurable set in , then the above  can be chosen s.t.  is compact]]></description><link>math\egorov's-theorem.html</link><guid isPermaLink="false">Math/Egorov's theorem.md</guid><pubDate>Mon, 24 Mar 2025 16:19:14 GMT</pubDate></item><item><title><![CDATA[elementary family of sets]]></title><description><![CDATA[ 
  <br>Let  be a nonempty set.<br>
 Let  be a collection of subsets of .<br>
 We call  an elementary family if<br>
@@ -2486,7 +1968,7 @@ We call  an elementary family if<br>
 <br><a data-tooltip-position="top" aria-label="Sup, inf, limsup, liminf.canvas" data-href="Sup, inf, limsup, liminf.canvas" href="math\sup,-inf,-limsup,-liminf.html" class="internal-link" target="_self" rel="noopener nofollow">Sup, inf, limsup, liminf</a>
 <br><a data-href="Counting principles" href="math\counting-principles.html" class="internal-link" target="_self" rel="noopener nofollow">Counting principles</a>
 <br><a data-href="Common Taylor series" href="math\common-taylor-series.html" class="internal-link" target="_self" rel="noopener nofollow">Common Taylor series</a>
-]]></description><link>math\elementary-stuff.html</link><guid isPermaLink="false">Math/Elementary stuff.md</guid><pubDate>Fri, 14 Mar 2025 16:07:16 GMT</pubDate></item><item><title><![CDATA[empirical optimization error]]></title><description><![CDATA[ 
+]]></description><link>math\elementary-stuff.html</link><guid isPermaLink="false">Math/Elementary stuff.md</guid><pubDate>Thu, 03 Apr 2025 17:16:39 GMT</pubDate></item><item><title><![CDATA[empirical optimization error]]></title><description><![CDATA[ 
  <br>Consider a <a data-href="Supervised learning" href="math\supervised-learning.html" class="internal-link" target="_self" rel="noopener nofollow">Supervised learning</a> problem with models .<br>
 Let .<br>
 We call  the empirical optimization error w.r.t. <br>
@@ -2577,7 +2059,18 @@ Then  has unique solution on .]]></description><link>math\existence-and-uniquene
 Then  has unique solution on .]]></description><link>math\existence-and-uniqueness-theorem-of-system-of-first-order-lode.html</link><guid isPermaLink="false">Math/Existence and uniqueness theorem of system of first order LODE.md</guid><pubDate>Wed, 05 Feb 2025 06:53:14 GMT</pubDate></item><item><title><![CDATA[expectation]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
 Let  be a <a data-tooltip-position="top" aria-label="random element" data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">random variable</a>.<br>
-Then  is called the expectation of .]]></description><link>math\expectation.html</link><guid isPermaLink="false">Math/expectation.md</guid><pubDate>Sun, 09 Mar 2025 14:44:37 GMT</pubDate></item><item><title><![CDATA[Extension of local solution of first order ODE]]></title><description><![CDATA[ 
+Then  is called the expectation of .]]></description><link>math\expectation.html</link><guid isPermaLink="false">Math/expectation.md</guid><pubDate>Sun, 09 Mar 2025 14:44:37 GMT</pubDate></item><item><title><![CDATA[Exponential distribution]]></title><description><![CDATA[ 
+ <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
+Let <br>
+Let  be a <a data-tooltip-position="top" aria-label="random element" data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">r.v.</a><br>
+Write  if  has a <a data-tooltip-position="top" aria-label="probability density function" data-href="probability density function" href="math\probability-density-function.html" class="internal-link" target="_self" rel="noopener nofollow">PDF</a> given by  for <br>
+In this case, we call  exponentialy distributed with parameter .<br>
+Usually, we extend  by zero to , thus <br>Note that<br>
+<br>
+<br>, so 
+<br>
+<br>
+]]></description><link>math\exponential-distribution.html</link><guid isPermaLink="false">Math/Exponential distribution.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[Extension of local solution of first order ODE]]></title><description><![CDATA[ 
  <br>Let  open, , ,  compact.<br>
 Suppose  is a solution to .<br>
 Then  s.t.  is an extension of  and  touches ]]></description><link>math\extension-of-local-solution-of-first-order-ode.html</link><guid isPermaLink="false">Math/Extension of local solution of first order ODE.md</guid><pubDate>Wed, 05 Feb 2025 06:43:32 GMT</pubDate></item><item><title><![CDATA[Extension of premeasures on semirings]]></title><description><![CDATA[ 
@@ -3060,7 +2553,7 @@ Hence .<br>
 Thus ]]></description><link>math\gauss-seidel-method.html</link><guid isPermaLink="false">Math/Gauss-Seidel method.md</guid><pubDate>Sat, 15 Feb 2025 06:32:07 GMT</pubDate></item><item><title><![CDATA[Geometric distribution]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
 Let  and .<br>
-Let  be a <a data-href="discrete random variable" href="math\discrete-random-variable.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random variable</a>.<br>
+Let  be a <a data-href="discrete random element" href="math\discrete-random-element.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random element</a>.<br>
 We write  if  for <br>
 In this case,  is said to follow the Geometric distribution with parameters .<br>Note that<br>
 <br>Canonical model: ,  is a sequence of independent <a data-tooltip-position="top" aria-label="Bernoulli distribution" data-href="Bernoulli distribution" href="math\bernoulli-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Bernoulli trial</a>s, and  being number of trials before first success
@@ -3068,7 +2561,7 @@ In this case,  is said to follow the Geometric distribution with parameters .<br
 <br> and 
 <br> and 
 <br>
-]]></description><link>math\geometric-distribution.html</link><guid isPermaLink="false">Math/Geometric distribution.md</guid><pubDate>Thu, 06 Mar 2025 14:23:46 GMT</pubDate></item><item><title><![CDATA[Gershgorin circle theorem]]></title><description><![CDATA[ 
+]]></description><link>math\geometric-distribution.html</link><guid isPermaLink="false">Math/Geometric distribution.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[Gershgorin circle theorem]]></title><description><![CDATA[ 
  <br>Let .<br>
 Let  be an eigenvalue of .<br>
 Denote <br>
@@ -3079,19 +2572,39 @@ Then , we have <br>
 Hence <br>
 In particular, .<br>
 Hence .<br>
-Now ]]></description><link>math\gershgorin-circle-theorem.html</link><guid isPermaLink="false">Math/Gershgorin circle theorem.md</guid><pubDate>Sat, 15 Feb 2025 10:24:26 GMT</pubDate></item><item><title><![CDATA[Gradient descent]]></title><description><![CDATA[ 
+Now ]]></description><link>math\gershgorin-circle-theorem.html</link><guid isPermaLink="false">Math/Gershgorin circle theorem.md</guid><pubDate>Sat, 15 Feb 2025 10:24:26 GMT</pubDate></item><item><title><![CDATA[Gradient conditions for convex]]></title><description><![CDATA[ 
+ <br>Let  be a <a data-href="vector space" href="vector space" class="internal-link" target="_self" rel="noopener nofollow">vector space</a> over .<br>
+Let  be a <a data-href="convex set" href="math\convex-set.html" class="internal-link" target="_self" rel="noopener nofollow">convex set</a>.<br>
+Let  be differentiable.<br>
+Then TFAE:<br>
+<br> is a <a data-href="convex function" href="math\convex-function.html" class="internal-link" target="_self" rel="noopener nofollow">convex function</a>
+
+<br>
+
+
+<br>First order condition (TFES):
+
+<br>
+<br>
+
+
+<br>Monotone condition:
+
+<br>
+
+
+]]></description><link>math\gradient-conditions-for-convex.html</link><guid isPermaLink="false">Math/Gradient conditions for convex.md</guid><pubDate>Sat, 05 Apr 2025 04:52:15 GMT</pubDate></item><item><title><![CDATA[Gradient descent]]></title><description><![CDATA[ 
  <br>Let  be differentiable.<br>
 Goal: minimize <br>
 Consider the <a data-href="iterative scheme" href="math\iterative-scheme.html" class="internal-link" target="_self" rel="noopener nofollow">iterative scheme</a> <br>
 In gradient descent, we choose <br>
-By <a data-href="Cauchy-Schwarz inequality" href="math\cauchy-schwarz-inequality.html" class="internal-link" target="_self" rel="noopener nofollow">Cauchy-Schwarz inequality</a>, we know  is the steepest descent direction. It remains to find the step size .<br>
-Recall the <a data-tooltip-position="top" aria-label="iterative scheme" data-href="iterative scheme" href="math\iterative-scheme.html" class="internal-link" target="_self" rel="noopener nofollow">error</a> and <a data-tooltip-position="top" aria-label="iterative scheme" data-href="iterative scheme" href="math\iterative-scheme.html" class="internal-link" target="_self" rel="noopener nofollow">residual</a> in <a data-href="Optimization" href="math\optimization.html" class="internal-link" target="_self" rel="noopener nofollow">Optimization</a>, given by<br>
+By <a data-href="Cauchy-Schwarz inequality" href="math\cauchy-schwarz-inequality.html" class="internal-link" target="_self" rel="noopener nofollow">Cauchy-Schwarz inequality</a>, we know  is the steepest descent direction. It remains to find the step size .<br>Recall the <a data-tooltip-position="top" aria-label="iterative scheme" data-href="iterative scheme" href="math\iterative-scheme.html" class="internal-link" target="_self" rel="noopener nofollow">error</a> and <a data-tooltip-position="top" aria-label="iterative scheme" data-href="iterative scheme" href="math\iterative-scheme.html" class="internal-link" target="_self" rel="noopener nofollow">residual</a> in <a data-href="Optimization" href="math\optimization.html" class="internal-link" target="_self" rel="noopener nofollow">Optimization</a>, given by<br>
 <br>
 <br>
 <br>
 <br>
 <br>Choosing small constant steps  gives <a data-href="Constant descent algorithms" href="math\constant-descent-algorithms.html" class="internal-link" target="_self" rel="noopener nofollow">Constant descent algorithms</a>, which can sometimes lead to convergence.<br>
-Choosing  to be the minimum of the function along the descent direction, however, gives the <a data-href="Steepest descent algorithm" href="math\steepest-descent-algorithm.html" class="internal-link" target="_self" rel="noopener nofollow">Steepest descent algorithm</a>]]></description><link>math\gradient-descent.html</link><guid isPermaLink="false">Math/Gradient descent.md</guid><pubDate>Wed, 12 Mar 2025 11:20:32 GMT</pubDate></item><item><title><![CDATA[Gradient descent on quadratic form]]></title><description><![CDATA[ 
+Choosing  to be the minimum of the function along the descent direction, however, gives the <a data-href="Steepest descent algorithm" href="math\steepest-descent-algorithm.html" class="internal-link" target="_self" rel="noopener nofollow">Steepest descent algorithm</a>]]></description><link>math\gradient-descent.html</link><guid isPermaLink="false">Math/Gradient descent.md</guid><pubDate>Sat, 12 Apr 2025 13:00:29 GMT</pubDate></item><item><title><![CDATA[Gradient descent on quadratic form]]></title><description><![CDATA[ 
  <br>Let <br>
 Note that we have<br>
 <br> by  symmetric
@@ -3103,7 +2616,7 @@ Then the <a data-tooltip-position="top" aria-label="iterative scheme" data-href=
 <br>Application<br>
 <br><a data-href="Constant descent on quadratic form" href="math\constant-descent-on-quadratic-form.html" class="internal-link" target="_self" rel="noopener nofollow">Constant descent on quadratic form</a>
 <br><a data-href="Steepest descent on quadratic form" href="math\steepest-descent-on-quadratic-form.html" class="internal-link" target="_self" rel="noopener nofollow">Steepest descent on quadratic form</a>
-]]></description><link>math\gradient-descent-on-quadratic-form.html</link><guid isPermaLink="false">Math/Gradient descent on quadratic form.md</guid><pubDate>Wed, 12 Mar 2025 11:20:32 GMT</pubDate></item><item><title><![CDATA[Group action]]></title><description><![CDATA[ 
+]]></description><link>math\gradient-descent-on-quadratic-form.html</link><guid isPermaLink="false">Math/Gradient descent on quadratic form.md</guid><pubDate>Sat, 12 Apr 2025 12:23:13 GMT</pubDate></item><item><title><![CDATA[Group action]]></title><description><![CDATA[ 
  <br><br>Let  be a group and  be a set.<br>
 Let a function .<br>
 We call this an action of  on  or a -action on  if<br>
@@ -3432,11 +2945,11 @@ Then by <a data-href="Hoeffding's inequality" href="math\hoeffding's-inequality.
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
 Let  be <a data-href="independent random variables" href="math\independent-random-variables.html" class="internal-link" target="_self" rel="noopener nofollow">independent random variables</a>.<br>
 Suppose <br>
-Then ]]></description><link>math\hoeffding&apos;s-inequality.html</link><guid isPermaLink="false">Math/Hoeffding&apos;s inequality.md</guid><pubDate>Sun, 09 Mar 2025 11:07:16 GMT</pubDate></item><item><title><![CDATA[Holder's inequality]]></title><description><![CDATA[ 
+Then ]]></description><link>math\hoeffding's-inequality.html</link><guid isPermaLink="false">Math/Hoeffding's inequality.md</guid><pubDate>Sun, 09 Mar 2025 11:07:16 GMT</pubDate></item><item><title><![CDATA[Holder's inequality]]></title><description><![CDATA[ 
  <br>Let  and  be conjugate exponents.<br>
 Then .<br>
 <br>"" iff  are positively linearly dependent, i.e.  or 
-]]></description><link>math\holder&apos;s-inequality.html</link><guid isPermaLink="false">Math/Holder&apos;s inequality.md</guid><pubDate>Wed, 05 Feb 2025 10:12:55 GMT</pubDate></item><item><title><![CDATA[holomorphic]]></title><description><![CDATA[ 
+]]></description><link>math\holder's-inequality.html</link><guid isPermaLink="false">Math/Holder's inequality.md</guid><pubDate>Wed, 05 Feb 2025 10:12:55 GMT</pubDate></item><item><title><![CDATA[holomorphic]]></title><description><![CDATA[ 
  <br>Let , and <br>
 We call<br>
 <br> holomophic at  if  exists
@@ -3709,7 +3222,7 @@ Then <br>
 <br>
 <br>
 <br>
-]]></description><link>math\jensen&apos;s-formula.html</link><guid isPermaLink="false">Math/Jensen&apos;s formula.md</guid><pubDate>Wed, 05 Feb 2025 06:02:27 GMT</pubDate></item><item><title><![CDATA[joint probability distribution]]></title><description><![CDATA[ 
+]]></description><link>math\jensen's-formula.html</link><guid isPermaLink="false">Math/Jensen's formula.md</guid><pubDate>Wed, 05 Feb 2025 06:02:27 GMT</pubDate></item><item><title><![CDATA[joint probability distribution]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
 Let  be <a data-href="measurable space" href="math\measurable-space.html" class="internal-link" target="_self" rel="noopener nofollow">measurable space</a>s.<br>
 Let  and  be <a data-tooltip-position="top" aria-label="random element" data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">r.v.</a>s.<br>
@@ -4093,7 +3606,7 @@ For , define  to be its orbital derivative w.r.t. the ODE system.<br>
 <br>Finding a Liapunov function is in general difficult, a good guess is a quadratic form , which is<br>
 <br>positive definite iff  and 
 <br>negative definite iff  and 
-]]></description><link>math\liapunov&apos;s-second-method.html</link><guid isPermaLink="false">Math/Liapunov&apos;s second method.md</guid><pubDate>Wed, 05 Feb 2025 07:02:31 GMT</pubDate></item><item><title><![CDATA[Lindelof]]></title><description><![CDATA[ 
+]]></description><link>math\liapunov's-second-method.html</link><guid isPermaLink="false">Math/Liapunov's second method.md</guid><pubDate>Wed, 05 Feb 2025 07:02:31 GMT</pubDate></item><item><title><![CDATA[Lindelof]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
 We call  Lindelof if every <a data-tooltip-position="top" aria-label="cover" data-href="cover" href="math\cover.html" class="internal-link" target="_self" rel="noopener nofollow">open cover</a> of  has a countable subcover, i.e.<br>
 <br> s.t.  countable 
@@ -4254,9 +3767,9 @@ A linear model is constructed by <br>
 ]]></description><link>math\linear-regression-model.html</link><guid isPermaLink="false">Math/Linear regression model.md</guid><pubDate>Sun, 09 Mar 2025 14:56:04 GMT</pubDate></item><item><title><![CDATA[Liouville's formula for system of first order LODE]]></title><description><![CDATA[ 
  <br>Let  and .<br>
 Suppose  solves .<br>
-Then  on , i.e. ]]></description><link>math\liouville&apos;s-formula-for-system-of-first-order-lode.html</link><guid isPermaLink="false">Math/Liouville&apos;s formula for system of first order LODE.md</guid><pubDate>Wed, 05 Feb 2025 06:54:09 GMT</pubDate></item><item><title><![CDATA[Liouville's theorem]]></title><description><![CDATA[ 
+Then  on , i.e. ]]></description><link>math\liouville's-formula-for-system-of-first-order-lode.html</link><guid isPermaLink="false">Math/Liouville's formula for system of first order LODE.md</guid><pubDate>Wed, 05 Feb 2025 06:54:09 GMT</pubDate></item><item><title><![CDATA[Liouville's theorem]]></title><description><![CDATA[ 
  <br>Let  be an <a data-tooltip-position="top" aria-label="holomorphic" data-href="holomorphic" href="math\holomorphic.html" class="internal-link" target="_self" rel="noopener nofollow">entire</a> <a data-href="bounded function" href="bounded function" class="internal-link" target="_self" rel="noopener nofollow">bounded function</a>.<br>
-Then  is a constant function.]]></description><link>math\liouville&apos;s-theorem.html</link><guid isPermaLink="false">Math/Liouville&apos;s theorem.md</guid><pubDate>Tue, 18 Feb 2025 13:39:37 GMT</pubDate></item><item><title><![CDATA[Lipschitz]]></title><description><![CDATA[ 
+Then  is a constant function.]]></description><link>math\liouville's-theorem.html</link><guid isPermaLink="false">Math/Liouville's theorem.md</guid><pubDate>Tue, 18 Feb 2025 13:39:37 GMT</pubDate></item><item><title><![CDATA[Lipschitz]]></title><description><![CDATA[ 
  <br>Let  be <a data-href="metric space" href="math\metric-space.html" class="internal-link" target="_self" rel="noopener nofollow">metric space</a>s.<br>
 Let  be a function and let .<br>
 We call  an -Lipschitz function if <br>
@@ -4324,7 +3837,96 @@ Then <br>
 <br><br>Below is a corollary of the above and <a data-href="Egorov's theorem" href="math\egorov's-theorem.html" class="internal-link" target="_self" rel="noopener nofollow">Egorov's theorem</a><br>
 With the assumption above,  is continuous <br>
 i.e.  is continuous on .<br>
-Moreover, this  can be chosen s.t.  is compact]]></description><link>math\lusin&apos;s-theorem.html</link><guid isPermaLink="false">Math/Lusin&apos;s theorem.md</guid><pubDate>Mon, 24 Mar 2025 16:19:14 GMT</pubDate></item><item><title><![CDATA[Manifold examples]]></title><description><![CDATA[ 
+Moreover, this  can be chosen s.t.  is compact]]></description><link>math\lusin's-theorem.html</link><guid isPermaLink="false">Math/Lusin's theorem.md</guid><pubDate>Mon, 24 Mar 2025 16:19:14 GMT</pubDate></item><item><title><![CDATA[Machine learning]]></title><description><![CDATA[<a class="tag" href="?query=tag:incomplete" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#incomplete</a> 
+ <br><br>
+<br>
+<a data-href="Supervised learning" href="math\supervised-learning.html" class="internal-link" target="_self" rel="noopener nofollow">Supervised learning</a>
+
+<br><a data-href="0-1 loss" href="math\0-1-loss.html" class="internal-link" target="_self" rel="noopener nofollow">0-1 loss</a>
+<br><a data-href="square loss" href="math\square-loss.html" class="internal-link" target="_self" rel="noopener nofollow">square loss</a>
+<br><a data-href="absolute loss" href="math\absolute-loss.html" class="internal-link" target="_self" rel="noopener nofollow">absolute loss</a>
+<br><a data-href="Hamming loss" href="math\hamming-loss.html" class="internal-link" target="_self" rel="noopener nofollow">Hamming loss</a>
+
+
+<br>
+<br>
+<a data-href="Risks" href="math\risks.html" class="internal-link" target="_self" rel="noopener nofollow">Risks</a>
+
+<br>
+<a data-href="Capacity control" href="math\capacity-control.html" class="internal-link" target="_self" rel="noopener nofollow">Capacity control</a>
+
+<br>
+<a data-href="random design" href="math\random-design.html" class="internal-link" target="_self" rel="noopener nofollow">random design</a>
+
+<br>
+<a data-href="fixed design" href="math\fixed-design.html" class="internal-link" target="_self" rel="noopener nofollow">fixed design</a>
+
+<br>
+<a data-href="Linear regression model" href="math\linear-regression-model.html" class="internal-link" target="_self" rel="noopener nofollow">Linear regression model</a>
+
+<br><a data-href="Ordinary least squares" href="math\ordinary-least-squares.html" class="internal-link" target="_self" rel="noopener nofollow">Ordinary least squares</a>
+
+<br><a data-href="Fixed-OLS" href="math\fixed-ols.html" class="internal-link" target="_self" rel="noopener nofollow">Fixed-OLS</a>
+<br><a data-href="Random-OLS" href="math\random-ols.html" class="internal-link" target="_self" rel="noopener nofollow">Random-OLS</a>
+
+
+<br><a data-href="Ridge least squares" href="math\ridge-least-squares.html" class="internal-link" target="_self" rel="noopener nofollow">Ridge least squares</a>
+
+<br><a data-href="Fixed-RLS" href="math\fixed-rls.html" class="internal-link" target="_self" rel="noopener nofollow">Fixed-RLS</a>
+
+
+<br><a data-href="Gradient descent on quadratic form" href="math\gradient-descent-on-quadratic-form.html" class="internal-link" target="_self" rel="noopener nofollow">Gradient descent on quadratic form</a>
+<br><a data-href="coefficient of determination" href="math\coefficient-of-determination.html" class="internal-link" target="_self" rel="noopener nofollow">coefficient of determination</a>
+
+
+<br>
+<a data-href="Convexification for binary classification" href="math\convexification-for-binary-classification.html" class="internal-link" target="_self" rel="noopener nofollow">Convexification for binary classification</a>
+
+<br>
+<a data-href="margin-based loss function" href="math\margin-based-loss-function.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based loss function</a>
+
+<br><a data-href="margin-based 0-1 loss" href="math\margin-based-0-1-loss.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based 0-1 loss</a>
+<br><a data-href="margin-based square loss" href="math\margin-based-square-loss.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based square loss</a>
+<br><a data-href="margin-based logistic loss" href="math\margin-based-logistic-loss.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based logistic loss</a>
+<br><a data-href="margin-based hinge loss" href="math\margin-based-hinge-loss.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based hinge loss</a>
+<br><a data-href="margin-based squared hinge loss" href="math\margin-based-squared-hinge-loss.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based squared hinge loss</a>
+<br><a data-href="margin-based exponential loss" href="math\margin-based-exponential-loss.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based exponential loss</a>
+
+
+<br>
+<a data-href="convex surrogate" href="math\convex-surrogate.html" class="internal-link" target="_self" rel="noopener nofollow">convex surrogate</a>
+
+<br><br>
+<br><a data-href="Empirical risk minimization" href="math\empirical-risk-minimization.html" class="internal-link" target="_self" rel="noopener nofollow">Empirical risk minimization</a>
+
+<br><a data-href="estimation error" href="math\estimation-error.html" class="internal-link" target="_self" rel="noopener nofollow">estimation error</a>
+
+<br><a data-href="uniform deviation" href="math\uniform-deviation.html" class="internal-link" target="_self" rel="noopener nofollow">uniform deviation</a>
+<br><a data-href="empirical optimization error" href="math\empirical-optimization-error.html" class="internal-link" target="_self" rel="noopener nofollow">empirical optimization error</a>
+
+
+<br><a data-href="approximation error" href="math\approximation-error.html" class="internal-link" target="_self" rel="noopener nofollow">approximation error</a>
+
+
+<br><a data-href="Rademacher complexity" href="math\rademacher-complexity.html" class="internal-link" target="_self" rel="noopener nofollow">Rademacher complexity</a>
+
+<br><a data-href="Properties of Rademacher complexity" href="math\properties-of-rademacher-complexity.html" class="internal-link" target="_self" rel="noopener nofollow">Properties of Rademacher complexity</a>
+<br><a data-href="Massart's lemma" href="math\massart's-lemma.html" class="internal-link" target="_self" rel="noopener nofollow">Massart's lemma</a> <a href=".?query=tag:incomplete" class="tag" target="_blank" rel="noopener nofollow">#incomplete</a> 
+<br><a data-href="Symmetrization of Rademacher complexity" href="math\symmetrization-of-rademacher-complexity.html" class="internal-link" target="_self" rel="noopener nofollow">Symmetrization of Rademacher complexity</a>
+
+
+<br><a data-href="Contraction principle for short maps" href="math\contraction-principle-for-short-maps.html" class="internal-link" target="_self" rel="noopener nofollow">Contraction principle for short maps</a>
+<br><br>
+<br><a data-href="SPSD kernel" href="math\spsd-kernel.html" class="internal-link" target="_self" rel="noopener nofollow">SPSD kernel</a>
+<br><a data-href="reproducing kernel" href="math\reproducing-kernel.html" class="internal-link" target="_self" rel="noopener nofollow">reproducing kernel</a>
+<br><a data-href="reproducing kernel Hilbert space" href="math\reproducing-kernel-hilbert-space.html" class="internal-link" target="_self" rel="noopener nofollow">reproducing kernel Hilbert space</a>
+
+<br><a data-href="Representer theorem" href="math\representer-theorem.html" class="internal-link" target="_self" rel="noopener nofollow">Representer theorem</a>
+<br><a data-href="Moore-Aronszajn theorem" href="math\moore-aronszajn-theorem.html" class="internal-link" target="_self" rel="noopener nofollow">Moore-Aronszajn theorem</a>
+<br><a data-href="Basic properties of SPSD kernel" href="math\basic-properties-of-spsd-kernel.html" class="internal-link" target="_self" rel="noopener nofollow">Basic properties of SPSD kernel</a>
+
+
+]]></description><link>math\machine-learning.html</link><guid isPermaLink="false">Math/Machine learning.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[Manifold examples]]></title><description><![CDATA[ 
  <br><br><br>Consider <br>
 Let  be the north and south poles<br>
 <br>Let  and 
@@ -4407,7 +4009,302 @@ See <a data-href="Convexification for binary classification" href="math\convexif
 Define the margin-based squared hinge loss function by<br>
 <br>
 <br>See <a data-href="margin-based loss function" href="math\margin-based-loss-function.html" class="internal-link" target="_self" rel="noopener nofollow">margin-based loss function</a> on constructing the actual <a data-tooltip-position="top" aria-label="Supervised learning" data-href="Supervised learning" href="math\supervised-learning.html" class="internal-link" target="_self" rel="noopener nofollow">loss function</a>.]]></description><link>math\margin-based-squared-hinge-loss.html</link><guid isPermaLink="false">Math/margin-based squared hinge loss.md</guid><pubDate>Sun, 09 Mar 2025 09:48:44 GMT</pubDate></item><item><title><![CDATA[Massart's lemma]]></title><description><![CDATA[ 
- ]]></description><link>math\massart&apos;s-lemma.html</link><guid isPermaLink="false">Math/Massart&apos;s lemma.md</guid><pubDate>Sun, 09 Mar 2025 17:58:10 GMT</pubDate></item><item><title><![CDATA[Mathematical structures]]></title><description><![CDATA[ 
+ ]]></description><link>math\massart's-lemma.html</link><guid isPermaLink="false">Math/Massart's lemma.md</guid><pubDate>Sun, 09 Mar 2025 17:58:10 GMT</pubDate></item><item><title><![CDATA[MATH3330]]></title><description><![CDATA[ 
+ <br>
+<br><a data-href="Python" href="coding\python.html" class="internal-link" target="_self" rel="noopener nofollow">Python</a>
+<br><a data-href="Python numpy" href="coding\python-numpy.html" class="internal-link" target="_self" rel="noopener nofollow">Python numpy</a>
+<br><a data-href="Python matplotlib" href="coding\python-matplotlib.html" class="internal-link" target="_self" rel="noopener nofollow">Python matplotlib</a>
+<br><a data-href="Python pandas" href="coding\python-pandas.html" class="internal-link" target="_self" rel="noopener nofollow">Python pandas</a>
+<br><a data-href="Python scikit-learn" href="coding\python-scikit-learn.html" class="internal-link" target="_self" rel="noopener nofollow">Python scikit-learn</a>
+<br><a data-tooltip-position="top" aria-label="../Coding/Python tensorflow" data-href="../Coding/Python tensorflow" href="coding\python-tensorflow.html" class="internal-link" target="_self" rel="noopener nofollow">Python tensorflow</a>
+<br><br><br>
+<br>Linear least squares
+
+<br>
+<br>
+<br>
+<br>
+
+
+<br>Logistic regression
+
+<br>
+<br>
+<br>, where 
+
+<br>Write , then 
+
+
+<br>
+<br>
+
+
+<br>Neural network
+
+<br>
+<br> where
+<br>
+
+
+<br><br>
+<br>Gradient/Steepest descent
+
+<br>
+<br>
+
+
+<br>Conjugate gradient
+
+<br>Initialize 
+<br>, 
+<br>
+<br>, 
+
+
+<br>Stochastic gradient
+
+<br>For , choose random 
+<br>
+
+
+<br>SGD on neural network
+
+<br>for epoch in epochs, choose random 
+<br>Forward: compute all  and 
+<br>Backward: for  in non-input layers, compute
+
+<br>
+
+
+<br>Update: new weights 
+
+
+<br><br>
+<br>
+<br>
+<br>Confusion matrix: If  predicts , the mistakes can be encapsulated as:<br><br>
+<br>Accuracy: 
+<br>Precision: 
+<br>Recall: 
+<br>F1 score: 
+<br>Fallout: 
+<br>Different threshold give different precision/recall
+
+<br>Plot and find intersection between precision and recall (against) threshold
+
+
+<br>Receiver Operator Characteristic (ROC) curve: Recall against fallout
+
+<br>Good classifer should have area under ROC curve = 1
+
+
+<br>Consider the spam filter problem<br>
+<br>Feature extraction: Use dictionary of vocabulary ignoring grammar, capital, etc.
+<br>Term frequency (TF):  number of appearances of term  in document 
+
+<br>measures how frequent  is in  
+
+
+<br>Inverse document frequence (IDF): 
+
+<br>measures how rare  is among all  in 
+
+
+<br><br>plt.plot(x,y,linespec,label='f')
+plt.scatter(x,y,color='r',marker='x')
+fig = plt.figure(figsize=[a,b])
+fig.add_subplot(m,n,k)
+pd.DataFrame(vals, index=rows, columns=cols)
+pd.get_dummies(df, columns=[...])
+
+LogisticRegression(solver='newton-cg',penalty='none')
+PolynomialFeatures(degree=deg, include_bias=bool)
+ dcomp = PCA(n_components=2)
+ Xr = dcomp.fit_transform(X)
+MLPClassifier(hidden_layer_sizes=[m1,...,mM], activation='relu',solver='sgd')
+accuracy_score(y,model.predict(X))  # ITS TRUTH THEN PREDICT
+
+model = keras.models.Sequential()
+keras.layers.Dense(&lt;num&gt;, activation='relu')
+keras.layers.Flatten(input_shape=[x,y])
+keras.layers.Conv2D(filters=256, kernel_size=3, strides=1, activation='relu', padding='same')
+keras.layers.MaxPooling2D(m,n)
+
+model.compile(loss='binary_crossentropy',optimizer='sgd')
+history = model.fit(X,y,epochs=100)
+<br><br>For details, see <a data-href="Ordinary least squares" href="math\ordinary-least-squares.html" class="internal-link" target="_self" rel="noopener nofollow">Ordinary least squares</a><br>
+<br> data set with 
+<br>
+<br>-th row of  is 
+<br>-th entry of  is 
+<br>Find  by minimizing 
+<br>
+<br>Normal equation: 
+<br>Gradient descent: 
+<br>Steepest descent: 
+<br>Skewed problem  zigzag path
+<br>Solution: Rescale features with the StandardScaler()  (see <a data-href="Python scikit-learn#Standard scaler" href="coding\python-scikit-learn.html#Standard_scaler" class="internal-link" target="_self" rel="noopener nofollow">Python scikit-learn &gt; Standard scaler</a>)
+<br>See <a data-href="Python scikit-learn" href="coding\python-scikit-learn.html" class="internal-link" target="_self" rel="noopener nofollow">Python scikit-learn</a> for using sklearn 
+<br><a data-href="coefficient of determination" href="math\coefficient-of-determination.html" class="internal-link" target="_self" rel="noopener nofollow">coefficient of determination</a>
+
+<br>
+<br>intuitively, 
+
+
+<br><a data-href="adjusted coefficient of determination" href="math\adjusted-coefficient-of-determination.html" class="internal-link" target="_self" rel="noopener nofollow">adjusted coefficient of determination</a>
+
+<br>
+
+
+<br><br>
+<br> data set with  and 
+
+<br>, to binary classify class  or class 
+
+
+<br>predictor: 
+<br> models probability of class 
+
+<br>Predict 
+<br>Predict 
+
+
+<br> is the decision boundary
+<br>Find  by minimizing 
+<br>
+<br>, where 
+
+<br>Write , then 
+
+
+<br>Newton's method: 
+<br>Conjugate gradient: big chapter below:
+<br><br>For details, see <a data-href="Conjugate gradient method" href="math\conjugate-gradient-method.html" class="internal-link" target="_self" rel="noopener nofollow">Conjugate gradient method</a> and <a data-href="Conjugate gradient method on quadratic form" href="math\conjugate-gradient-method-on-quadratic-form.html" class="internal-link" target="_self" rel="noopener nofollow">Conjugate gradient method on quadratic form</a><br>
+To minimize , <br>
+Given  and tolerance <br>
+Initialize  and <br>
+For :
+
+<br>Compute ,
+
+<br>where 
+
+
+<br>Compute 
+<br>Compute 
+
+<br>where 
+
+
+
+<br>For , we have <br><br>Confusion matrix: If  predicts , the mistakes can be encapsulated as:<br><br>
+<br>Accuracy: 
+<br>Precision: 
+<br>Recall: 
+<br>F1 score: 
+<br>Fallout: 
+<br>Different threshold give different precision/recall
+
+<br>Plot and find intersection between precision and recall (against) threshold
+
+
+<br>Receiver Operator Characteristic (ROC) curve: Recall against fallout
+
+<br>Good classifer should have area under ROC curve = 1
+
+
+<br>Consider the spam filter problem<br>
+<br>Feature extraction: Use dictionary of vocabulary ignoring grammar, capital, etc.
+<br>Term frequency (TF):  number of appearances of term  in document 
+
+<br>measures how frequent  is in  
+
+
+<br>Inverse document frequence (IDF): 
+
+<br>measures how rare  is among all  in 
+
+
+<br><br>
+<br>Input layer: 
+<br>Hidden layer :  given by
+
+<br> 
+<br> nonlinear activation function
+
+
+<br>Output layer:  given by
+
+<br>
+
+
+<br><br>We apply stochastic gradient descent on a neural network<br>
+The cost function to minimize is  at each datapoint .<br>Initialize <br>
+For :<br>
+<br>Choose some random 
+<br>Forward propagation: Compute 
+
+<br>by computing all nodes downstream
+
+
+<br>Compute  by delta rule
+<br>Backpropagation: Compute 
+
+<br>by updating weights upstream
+<br>sometimes add the momentum term to avoid getting stuck in local minima, i.e. with 
+
+<br> 
+
+
+
+
+<br>To find , we use the delta rule:<br>
+<br> where
+<br>
+<br>Notice  depends on downstream weights, so we have to compute and update each weight upstream<br><br>First, notation:<br>
+<br>An image is a 2D matrix of pixels
+<br>A receptive field of an image is a patch of pixels, usually rectangular
+<br>A filter/kernel is a map (matrix of weights) running through every receptive field in the image, resulting in a weighted sum over each patch
+
+<br>The stride of a filter is the number of pixels it moves in each direction when shifting through the image
+<br>The zero-padding of a filter is the number of extra pixels we consider outside the image when applying the filter.
+
+
+<br>In a convolution neural network, we can visualize<br>
+<br>Each layer as a stack of images, each pixel on the image is a neuron
+<br>A feature map mapping all images in a layer to one sheet of the next layer
+
+<br>The map consists of one kernel/filter for each image in the stack, which can be different or the same (called parameter sharing, can reduce number of weights)
+<br>The sum of all the results of the filters gives the value for the next layer, therefore we only need one bias term (instead of one for each filter)
+<br>Each feature map (thus each sheet of the next layer) represents one feature of the images, e.g. vertical lines, horizontal lines, etc.
+
+
+<br>See <a data-tooltip-position="top" aria-label="../Coding/Python tensorflow" data-href="../Coding/Python tensorflow" href="coding\python-tensorflow.html" class="internal-link" target="_self" rel="noopener nofollow">Python tensorflow</a> for coding<br><br>
+<br>Covariance: 
+<br>If ,  is the covariance matrix
+<br>SVD:  with
+
+<br>  unitary
+<br>  diagonal, entries are 
+<br>  unitary, columns are eigenvectors of  
+
+
+<br>Express  in the basis formed by columns of 
+
+<br>
+<br>
+<br>, where  are eigenvalues of 
+
+
+<br>PCA: 
+
+<br>Subtract mean off each feature  to form 
+<br>Do SVD  and order largest eigenvalue to smallest eigenvalue
+<br>Pick first  columns of  to form  a  matrix
+<br> row vector of lower dimension
+
+
+]]></description><link>math\math3330.html</link><guid isPermaLink="false">Math/MATH3330.md</guid><pubDate>Sun, 13 Apr 2025 19:06:59 GMT</pubDate></item><item><title><![CDATA[Mathematical structures]]></title><description><![CDATA[ 
  The ring chainOne binary operation<br><br>, where<br>
 <br> is a field
 <br> is a module over 
@@ -4824,7 +4721,7 @@ Suppose <br>
 <br>Then  we have <br>
 <br>
 <br>
-]]></description><link>math\mcdiarmid&apos;s-inequality.html</link><guid isPermaLink="false">Math/McDiarmid&apos;s inequality.md</guid><pubDate>Sun, 09 Mar 2025 14:44:59 GMT</pubDate></item><item><title><![CDATA[meagre]]></title><description><![CDATA[ 
+]]></description><link>math\mcdiarmid's-inequality.html</link><guid isPermaLink="false">Math/McDiarmid's inequality.md</guid><pubDate>Sun, 09 Mar 2025 14:44:59 GMT</pubDate></item><item><title><![CDATA[meagre]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
 Let .<br>
 We call  meagre if TFES hold:<br>
@@ -5059,7 +4956,14 @@ Then  and <br>
 ]]></description><link>math\measure-theory.html</link><guid isPermaLink="false">Math/Measure theory.md</guid><pubDate>Mon, 24 Mar 2025 16:19:14 GMT</pubDate></item><item><title><![CDATA[Method of reduction of order for second order ODE]]></title><description><![CDATA[ 
  <br>Given  solves , find <br>
 Let , then  becomes a <a data-href="First order LODE, integrating factor" href="math\first-order-lode,-integrating-factor.html" class="internal-link" target="_self" rel="noopener nofollow">First order LODE, integrating factor</a><br>Another method is to use Abel's theorem:<br>
-Take one  <a data-href="First order LODE, integrating factor" href="math\first-order-lode,-integrating-factor.html" class="internal-link" target="_self" rel="noopener nofollow">First order LODE, integrating factor</a>]]></description><link>math\method-of-reduction-of-order-for-second-order-ode.html</link><guid isPermaLink="false">Math/Method of reduction of order for second order ODE.md</guid><pubDate>Wed, 05 Feb 2025 06:33:39 GMT</pubDate></item><item><title><![CDATA[Method of undetermined coefficients for CCHLODE]]></title><description><![CDATA[ 
+Take one  <a data-href="First order LODE, integrating factor" href="math\first-order-lode,-integrating-factor.html" class="internal-link" target="_self" rel="noopener nofollow">First order LODE, integrating factor</a>]]></description><link>math\method-of-reduction-of-order-for-second-order-ode.html</link><guid isPermaLink="false">Math/Method of reduction of order for second order ODE.md</guid><pubDate>Wed, 05 Feb 2025 06:33:39 GMT</pubDate></item><item><title><![CDATA[Method of transformations for absolutely continuous random variables]]></title><description><![CDATA[ 
+ <br>Let  be a <a data-href="Probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">Probability space</a>.<br>
+Let  be a <a data-tooltip-position="top" aria-label="absolutely continuous random variable" data-href="absolutely continuous random variable" href="math\absolutely-continuous-random-variable.html" class="internal-link" target="_self" rel="noopener nofollow">ABC r.v.</a> with density .<br>
+Let  be a diffeomorphism onto its image.<br>
+That is, its inverse  is differentiable.<br>
+Let  be the density function of <br>
+Then <br>
+That is, ]]></description><link>math\method-of-transformations-for-absolutely-continuous-random-variables.html</link><guid isPermaLink="false">Math/Method of transformations for absolutely continuous random variables.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[Method of undetermined coefficients for CCHLODE]]></title><description><![CDATA[ 
  <br>Consider .<br>
 Characteristic equation: ,  multiplicity of <br><br><br>Consider .<br>
 Characteristic equation ,  multiplicity of <br>]]></description><link>math\method-of-undetermined-coefficients-for-cchlode.html</link><guid isPermaLink="false">Math/Method of undetermined coefficients for CCHLODE.md</guid><pubDate>Wed, 05 Feb 2025 06:33:00 GMT</pubDate></item><item><title><![CDATA[Method of undetermined coefficients for system of first order LODE]]></title><description><![CDATA[ 
@@ -5122,7 +5026,7 @@ Then TFAE:<br>
  <br>Let  be an open disc.<br>
 Let  be <a data-href="continuous" href="math\continuous.html" class="internal-link" target="_self" rel="noopener nofollow">continuous</a>.<br>
 Suppose  <a data-href="Jordan curve" href="math\jordan-curve.html" class="internal-link" target="_self" rel="noopener nofollow">Jordan curve</a> , <br>
-Then  is <a data-href="holomorphic" href="math\holomorphic.html" class="internal-link" target="_self" rel="noopener nofollow">holomorphic</a> on .]]></description><link>math\morera&apos;s-theorem.html</link><guid isPermaLink="false">Math/Morera&apos;s theorem.md</guid><pubDate>Tue, 18 Feb 2025 13:39:37 GMT</pubDate></item><item><title><![CDATA[Muirhead inequality]]></title><description><![CDATA[ 
+Then  is <a data-href="holomorphic" href="math\holomorphic.html" class="internal-link" target="_self" rel="noopener nofollow">holomorphic</a> on .]]></description><link>math\morera's-theorem.html</link><guid isPermaLink="false">Math/Morera's theorem.md</guid><pubDate>Tue, 18 Feb 2025 13:39:37 GMT</pubDate></item><item><title><![CDATA[Muirhead inequality]]></title><description><![CDATA[ 
  <br>Let <br>
 Define  the -mean of .<br>
 Then TFAE:<br>
@@ -5170,7 +5074,7 @@ We say that  happens -nearly w.r.t.  if <br>
 <br>In this case, we write ]]></description><link>math\nearly.html</link><guid isPermaLink="false">Math/nearly.md</guid><pubDate>Mon, 24 Mar 2025 16:19:14 GMT</pubDate></item><item><title><![CDATA[Negative binomial distribution]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
 Let  and .<br>
-Let  be a <a data-href="discrete random variable" href="math\discrete-random-variable.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random variable</a>.<br>
+Let  be a <a data-href="discrete random element" href="math\discrete-random-element.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random element</a>.<br>
 We write  if  for .<br>
 In this case,  is said to follow the Negative Binomial distribution with parameters .<br>Note that<br>
 <br>Canonical model: ,  is a sequence of independent <a data-tooltip-position="top" aria-label="Bernoulli distribution" data-href="Bernoulli distribution" href="math\bernoulli-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Bernoulli trial</a>s, and  being number of trials before  successes
@@ -5179,7 +5083,7 @@ In this case,  is said to follow the Negative Binomial distribution with paramet
 <br>
 <br>
 <br>
-]]></description><link>math\negative-binomial-distribution.html</link><guid isPermaLink="false">Math/Negative binomial distribution.md</guid><pubDate>Thu, 06 Mar 2025 14:37:58 GMT</pubDate></item><item><title><![CDATA[neighbourhood]]></title><description><![CDATA[ 
+]]></description><link>math\negative-binomial-distribution.html</link><guid isPermaLink="false">Math/Negative binomial distribution.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[neighbourhood]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
 Let <br>
 We call  a neighbourhood of  if TFES hold:<br>
@@ -5207,7 +5111,24 @@ We call  nonmeagre if TFES hold:<br>
 ]]></description><link>math\nonsingular-matrix.html</link><guid isPermaLink="false">Math/Nonsingular matrix.md</guid><pubDate>Sat, 15 Feb 2025 10:23:29 GMT</pubDate></item><item><title><![CDATA[Norm inequality]]></title><description><![CDATA[ 
  <br><br>Let .<br>
 Then  and <br><br>Let .<br>
-Then  and ]]></description><link>math\norm-inequality.html</link><guid isPermaLink="false">Math/Norm inequality.md</guid><pubDate>Wed, 05 Feb 2025 10:13:30 GMT</pubDate></item><item><title><![CDATA[Normal matrix]]></title><description><![CDATA[ 
+Then  and ]]></description><link>math\norm-inequality.html</link><guid isPermaLink="false">Math/Norm inequality.md</guid><pubDate>Wed, 05 Feb 2025 10:13:30 GMT</pubDate></item><item><title><![CDATA[Normal distribution]]></title><description><![CDATA[ 
+ <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
+Let <br>
+Let  be a <a data-tooltip-position="top" aria-label="random element" data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">r.v.</a><br>
+Write  if  has a <a data-tooltip-position="top" aria-label="probability density function" data-href="probability density function" href="math\probability-density-function.html" class="internal-link" target="_self" rel="noopener nofollow">PDF</a> given by <br>
+In this case, we call  normally distributed<br>
+If , we call  a standard normal random variable.<br>
+Write  for the <a data-tooltip-position="top" aria-label="cumulative distribution function" data-href="cumulative distribution function" href="math\cumulative-distribution-function.html" class="internal-link" target="_self" rel="noopener nofollow">CDF</a> for  and  for the <a data-tooltip-position="top" aria-label="cumulative distribution function" data-href="cumulative distribution function" href="math\cumulative-distribution-function.html" class="internal-link" target="_self" rel="noopener nofollow">CDF</a> for a standard normal random variable.<br>Note that<br>
+<br>If  then 
+<br>If  then 
+<br>
+<br>
+<br>
+<br>
+<br>, i.e. 
+<br>
+<br>
+]]></description><link>math\normal-distribution.html</link><guid isPermaLink="false">Math/Normal distribution.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[Normal matrix]]></title><description><![CDATA[ 
  <br>
 <br>
 <br><br>
@@ -5835,14 +5756,14 @@ Consider the angles in a unit circle formed by:<br>
 ]]></description><link>math\point-set-topology.html</link><guid isPermaLink="false">Math/Point-set topology.md</guid><pubDate>Mon, 31 Mar 2025 17:48:53 GMT</pubDate></item><item><title><![CDATA[Poisson distribution]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
 Let .<br>
-Let  be a <a data-href="discrete random variable" href="math\discrete-random-variable.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random variable</a>.<br>
+Let  be a <a data-href="discrete random element" href="math\discrete-random-element.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random element</a>.<br>
 We write  if <br>
 In this case,  is said to follow the Poisson distribution with parameter . <br>Note that<br>
 <br>when  large and  moderate,  approximates  the <a data-href="Binomial distribution" href="math\binomial-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Binomial distribution</a>
 <br> and 
 <br>
 <br>
-]]></description><link>math\poisson-distribution.html</link><guid isPermaLink="false">Math/Poisson distribution.md</guid><pubDate>Wed, 05 Mar 2025 17:54:13 GMT</pubDate></item><item><title><![CDATA[Power means inequality]]></title><description><![CDATA[ 
+]]></description><link>math\poisson-distribution.html</link><guid isPermaLink="false">Math/Poisson distribution.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[Power means inequality]]></title><description><![CDATA[ 
  <br><br>Let  and .<br>
 Define  by <br>
 Note that  is differentiable, in particular <br>
@@ -5894,13 +5815,12 @@ We call  a premeasure if <br>
 We call  a preorder if it is:<br>
 <br><a data-href="reflexive relation" href="math\reflexive-relation.html" class="internal-link" target="_self" rel="noopener nofollow">reflexive relation</a>: 
 <br><a data-href="transitive relation" href="math\transitive-relation.html" class="internal-link" target="_self" rel="noopener nofollow">transitive relation</a>:  if  and  then 
-]]></description><link>math\preorder.html</link><guid isPermaLink="false">Math/preorder.md</guid><pubDate>Sat, 22 Feb 2025 08:00:27 GMT</pubDate></item><item><title><![CDATA[probability density function]]></title><description><![CDATA[ 
+]]></description><link>math\preorder.html</link><guid isPermaLink="false">Math/preorder.md</guid><pubDate>Sat, 22 Feb 2025 08:00:27 GMT</pubDate></item><item><title><![CDATA[probability density function]]></title><description><![CDATA[<a class="tag" href="?query=tag:unfinished" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#unfinished</a> 
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
-Let  be a <a data-tooltip-position="top" aria-label="random element" data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">random variable</a>.<br>
-Suppose  is <a data-href="absolutely continuous" href="absolutely continuous" class="internal-link" target="_self" rel="noopener nofollow">absolutely continuous</a>.<br>
-Then  s.t. <br>
-We call  the probability density function of .<br>
-Note that ]]></description><link>math\probability-density-function.html</link><guid isPermaLink="false">Math/probability density function.md</guid><pubDate>Sun, 09 Mar 2025 14:44:37 GMT</pubDate></item><item><title><![CDATA[probability distribution]]></title><description><![CDATA[ 
+Let  be a <a data-tooltip-position="top" aria-label="measure" data-href="measure" href="math\measure.html" class="internal-link" target="_self" rel="noopener nofollow">measure space</a>.<br>
+Let  be a <a data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">random element</a>.<br>
+<a href=".?query=tag:unfinished" class="tag" target="_blank" rel="noopener nofollow">#unfinished</a> <br>If , see <a data-href="absolutely continuous random variable" href="math\absolutely-continuous-random-variable.html" class="internal-link" target="_self" rel="noopener nofollow">absolutely continuous random variable</a><br>
+If  is countable and  is the <a data-href="counting measure" href="counting measure" class="internal-link" target="_self" rel="noopener nofollow">counting measure</a>, we call  the probability mass function for  (see <a data-href="discrete random element" href="math\discrete-random-element.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random element</a>)]]></description><link>math\probability-density-function.html</link><guid isPermaLink="false">Math/probability density function.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[probability distribution]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
 Let  be a <a data-href="measurable space" href="math\measurable-space.html" class="internal-link" target="_self" rel="noopener nofollow">measurable space</a>.<br>
 Let  be a <a data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">random element</a>.<br>
@@ -5956,7 +5876,13 @@ In this case, we call  a probability measure<br>In probability theory, the measu
 <a data-href="independent random variables" href="math\independent-random-variables.html" class="internal-link" target="_self" rel="noopener nofollow">independent random variables</a>
 
 <br>
-<a data-href="discrete random variable" href="math\discrete-random-variable.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random variable</a>
+<a data-href="discrete random element" href="math\discrete-random-element.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random element</a>
+
+<br>
+<a data-href="absolutely continuous random variable" href="math\absolutely-continuous-random-variable.html" class="internal-link" target="_self" rel="noopener nofollow">absolutely continuous random variable</a>
+
+<br>
+<a data-href="Method of transformations for absolutely continuous random variables" href="math\method-of-transformations-for-absolutely-continuous-random-variables.html" class="internal-link" target="_self" rel="noopener nofollow">Method of transformations for absolutely continuous random variables</a>
 
 <br><br>
 <br><a data-href="expectation" href="math\expectation.html" class="internal-link" target="_self" rel="noopener nofollow">expectation</a>
@@ -5977,13 +5903,19 @@ In this case, we call  a probability measure<br>In probability theory, the measu
 <br><a data-href="Hoeffding's inequality" href="math\hoeffding's-inequality.html" class="internal-link" target="_self" rel="noopener nofollow">Hoeffding's inequality</a>
 <br><a data-href="McDiarmid's inequality" href="math\mcdiarmid's-inequality.html" class="internal-link" target="_self" rel="noopener nofollow">McDiarmid's inequality</a>
 <br><br>
+<br><a data-href="de Moivre-Laplace limit theorem" href="math\de-moivre-laplace-limit-theorem.html" class="internal-link" target="_self" rel="noopener nofollow">de Moivre-Laplace limit theorem</a>
+<br><br><br>
 <br><a data-href="Bernoulli distribution" href="math\bernoulli-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Bernoulli distribution</a>
 <br><a data-href="Binomial distribution" href="math\binomial-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Binomial distribution</a>
 <br><a data-href="Poisson distribution" href="math\poisson-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Poisson distribution</a>
 <br><a data-href="Geometric distribution" href="math\geometric-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Geometric distribution</a>
 <br><a data-href="Negative binomial distribution" href="math\negative-binomial-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Negative binomial distribution</a>
 <br><a data-href="Rademacher distribution" href="math\rademacher-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Rademacher distribution</a>
-]]></description><link>math\probability-theory.html</link><guid isPermaLink="false">Math/Probability theory.md</guid><pubDate>Sun, 09 Mar 2025 17:44:09 GMT</pubDate></item><item><title><![CDATA[product measure]]></title><description><![CDATA[ 
+<br><br>
+<br><a data-href="Uniform distribution" href="math\uniform-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Uniform distribution</a>
+<br><a data-href="Normal distribution" href="math\normal-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Normal distribution</a>
+<br><a data-href="Exponential distribution" href="math\exponential-distribution.html" class="internal-link" target="_self" rel="noopener nofollow">Exponential distribution</a>
+]]></description><link>math\probability-theory.html</link><guid isPermaLink="false">Math/Probability theory.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[product measure]]></title><description><![CDATA[ 
  <br>Let  be <a data-tooltip-position="top" aria-label="measure" data-href="measure" href="math\measure.html" class="internal-link" target="_self" rel="noopener nofollow">measure space</a>s.<br>
 Denote .<br>
 Then  by <a data-href="product sigma-algebra" href="math\product-sigma-algebra.html" class="internal-link" target="_self" rel="noopener nofollow">product sigma-algebra</a><br>
@@ -6156,10 +6088,10 @@ Define the Rademacher complexity of  by<br>
 <br>
 ]]></description><link>math\rademacher-complexity.html</link><guid isPermaLink="false">Math/Rademacher complexity.md</guid><pubDate>Sun, 09 Mar 2025 18:43:50 GMT</pubDate></item><item><title><![CDATA[Rademacher distribution]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
-Let  be a <a data-href="discrete random variable" href="math\discrete-random-variable.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random variable</a>.<br>
+Let  be a <a data-href="discrete random element" href="math\discrete-random-element.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random element</a>.<br>
 We say that  follows the Rademacher distribution if <br>
 <br>
-]]></description><link>math\rademacher-distribution.html</link><guid isPermaLink="false">Math/Rademacher distribution.md</guid><pubDate>Sun, 09 Mar 2025 17:49:15 GMT</pubDate></item><item><title><![CDATA[random design]]></title><description><![CDATA[ 
+]]></description><link>math\rademacher-distribution.html</link><guid isPermaLink="false">Math/Rademacher distribution.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[random design]]></title><description><![CDATA[ 
  <br>Consider a <a data-href="Supervised learning" href="math\supervised-learning.html" class="internal-link" target="_self" rel="noopener nofollow">Supervised learning</a> problem.<br>
 Suppose the dataset  is obtained such that both  and  are random.<br>
 We call this a random design setting, aimed to generalize and predict new unseen data.<br>
@@ -6169,7 +6101,8 @@ Let  be a <a data-href="measurable space" href="math\measurable-space.html" clas
 Let  be a <a data-href="measurable function" href="math\measurable-function.html" class="internal-link" target="_self" rel="noopener nofollow">measurable function</a>.<br>
 Then we call  a random element.<br>If , then  is called a random variable<br>
 If  then  is called a random vector<br>
-If  then  is called a random matrix]]></description><link>math\random-element.html</link><guid isPermaLink="false">Math/random element.md</guid><pubDate>Sun, 09 Mar 2025 14:47:49 GMT</pubDate></item><item><title><![CDATA[Random-OLS]]></title><description><![CDATA[ 
+If  then  is called a random matrix<br>If  is countable, see <a data-href="discrete random element" href="math\discrete-random-element.html" class="internal-link" target="_self" rel="noopener nofollow">discrete random element</a><br>
+If  is <a data-href="absolutely continuous" href="absolutely continuous" class="internal-link" target="_self" rel="noopener nofollow">absolutely continuous</a>, see <a data-href="probability density function" href="math\probability-density-function.html" class="internal-link" target="_self" rel="noopener nofollow">probability density function</a>]]></description><link>math\random-element.html</link><guid isPermaLink="false">Math/random element.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[Random-OLS]]></title><description><![CDATA[ 
  <br>Consider a <a data-href="Supervised learning" href="math\supervised-learning.html" class="internal-link" target="_self" rel="noopener nofollow">Supervised learning</a> problem <br>
 <br>predicting the distribution  on  given by the <a data-tooltip-position="top" aria-label="random element" data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">random variable</a>s 
 <br><a data-href="random design" href="math\random-design.html" class="internal-link" target="_self" rel="noopener nofollow">random design</a> with  being <a data-tooltip-position="top" aria-label="independent random variables" data-href="independent random variables" href="math\independent-random-variables.html" class="internal-link" target="_self" rel="noopener nofollow">i.i.d.</a> <a data-tooltip-position="top" aria-label="random element" data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">r.v.</a>s following 
@@ -6320,7 +6253,7 @@ Then ]]></description><link>math\reading-group-on-folland.html</link><guid isPer
 <br> is upper triangular with real entries
 <br>,  is orthogonal,  is upper triangular
 <br> orthonormal basis  for  s.t.  is upper triangular
-]]></description><link>math\real-schur&apos;s-theorem-for-matrices.html</link><guid isPermaLink="false">Math/Real Schur&apos;s theorem for matrices.md</guid><pubDate>Sat, 15 Feb 2025 10:07:04 GMT</pubDate></item><item><title><![CDATA[Real symmetric matrix]]></title><description><![CDATA[ 
+]]></description><link>math\real-schur's-theorem-for-matrices.html</link><guid isPermaLink="false">Math/Real Schur's theorem for matrices.md</guid><pubDate>Sat, 15 Feb 2025 10:07:04 GMT</pubDate></item><item><title><![CDATA[Real symmetric matrix]]></title><description><![CDATA[ 
  <br>
 <br>
 <br> is self-adjoint in 
@@ -6674,7 +6607,50 @@ Otherwise, we can say  is a heterogeneous relation.]]></description><link>math\r
 <br><a data-href="Separable and metrizable implies second countable" href="Separable and metrizable implies second countable" class="internal-link" target="_self" rel="noopener nofollow">Separable and metrizable implies second countable</a>
 <br><a data-href="Metrizable implies first countable" href="Metrizable implies first countable" class="internal-link" target="_self" rel="noopener nofollow">Metrizable implies first countable</a>
 ]]></description><link>math\relationships-between-countability.html</link><guid isPermaLink="false">Math/Relationships between countability.md</guid><pubDate>Tue, 18 Mar 2025 14:06:11 GMT</pubDate></item><item><title><![CDATA[Relationships between separation axioms]]></title><description><![CDATA[ 
- Assuming T1<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
+ Assuming T1<br>Green: always hold<br>
+Red: hold if  is a <a data-href="T1 space" href="math\t1-space.html" class="internal-link" target="_self" rel="noopener nofollow">T1 space</a><br>
+Yellow: equivalences<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
+We call  regular if TFES hold:<br>
+<br> are <a data-href="separated by neighbourhoods" href="math\separated-by-neighbourhoods.html" class="internal-link" target="_self" rel="noopener nofollow">separated by neighbourhoods</a>
+<br>
+<br>
+<br> with 
+<br>
+<br> is a <a data-href="local base" href="math\local-base.html" class="internal-link" target="_self" rel="noopener nofollow">local base</a> at 
+regular space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
+We call  Hausdorff if TFES hold:<br>
+<br> are <a data-href="separated by neighbourhoods" href="math\separated-by-neighbourhoods.html" class="internal-link" target="_self" rel="noopener nofollow">separated by neighbourhoods</a>
+<br>
+<br>
+<br>
+Hausdorff space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
+We call  completely regular if TFES hold:<br>
+<br> are <a data-href="separated by a continuous function" href="math\separated-by-a-continuous-function.html" class="internal-link" target="_self" rel="noopener nofollow">separated by a continuous function</a>
+<br> <a data-href="continuous" href="math\continuous.html" class="internal-link" target="_self" rel="noopener nofollow">continuous</a>  s.t. 
+completely regular space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
+We call  completely Hausdorff if TFES hold:<br>
+<br> are <a data-href="separated by a continuous function" href="math\separated-by-a-continuous-function.html" class="internal-link" target="_self" rel="noopener nofollow">separated by a continuous function</a>
+<br> <a data-href="continuous" href="math\continuous.html" class="internal-link" target="_self" rel="noopener nofollow">continuous</a>  s.t. 
+completely Hausdorff space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
+We call  T2 if TFES hold:<br>
+<br> is a <a data-href="Hausdorff space" href="math\hausdorff-space.html" class="internal-link" target="_self" rel="noopener nofollow">Hausdorff space</a> and a <a data-href="T0 space" href="math\t0-space.html" class="internal-link" target="_self" rel="noopener nofollow">T0 space</a>
+<br> is a <a data-href="Hausdorff space" href="math\hausdorff-space.html" class="internal-link" target="_self" rel="noopener nofollow">Hausdorff space</a> and a <a data-href="T1 space" href="math\t1-space.html" class="internal-link" target="_self" rel="noopener nofollow">T1 space</a>
+<br> is a <a data-href="Hausdorff space" href="math\hausdorff-space.html" class="internal-link" target="_self" rel="noopener nofollow">Hausdorff space</a>
+T2 space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
+We call  T1 if TFES hold:<br>
+<br>
+<br>
+<br>all finite sets are closed
+<br>all cofinite sets are open
+<br>
+T1 space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
+We call  normal if TFES hold:<br>
+<br> are <a data-href="separated by neighbourhoods" href="math\separated-by-neighbourhoods.html" class="internal-link" target="_self" rel="noopener nofollow">separated by neighbourhoods</a>
+<br>
+<br>
+<br>
+<br>
+normal space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
 We call  T3 if TFES hold:<br>
 <br> is a <a data-href="regular space" href="math\regular-space.html" class="internal-link" target="_self" rel="noopener nofollow">regular space</a> and a <a data-href="T0 space" href="math\t0-space.html" class="internal-link" target="_self" rel="noopener nofollow">T0 space</a>
 <br> is a <a data-href="regular space" href="math\regular-space.html" class="internal-link" target="_self" rel="noopener nofollow">regular space</a> and a <a data-href="T1 space" href="math\t1-space.html" class="internal-link" target="_self" rel="noopener nofollow">T1 space</a>
@@ -6697,68 +6673,25 @@ We call  completely normal if TFES hold:<br>
 <br> are <a data-href="separated by a continuous function" href="math\separated-by-a-continuous-function.html" class="internal-link" target="_self" rel="noopener nofollow">separated by a continuous function</a>
 <br> <a data-href="continuous" href="math\continuous.html" class="internal-link" target="_self" rel="noopener nofollow">continuous</a>  s.t. 
 <br> is a <a data-href="normal space" href="math\normal-space.html" class="internal-link" target="_self" rel="noopener nofollow">normal space</a> (by <a data-href="Urysohn lemma" href="math\urysohn-lemma.html" class="internal-link" target="_self" rel="noopener nofollow">Urysohn lemma</a>)
-completely normal space<br>Green: always hold<br>
-Red: hold if  is a <a data-href="T1 space" href="math\t1-space.html" class="internal-link" target="_self" rel="noopener nofollow">T1 space</a><br>
-Yellow: equivalences<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
-We call  regular if TFES hold:<br>
-<br> are <a data-href="separated by neighbourhoods" href="math\separated-by-neighbourhoods.html" class="internal-link" target="_self" rel="noopener nofollow">separated by neighbourhoods</a>
-<br>
-<br>
-<br> with 
-<br>
-<br> is a <a data-href="local base" href="math\local-base.html" class="internal-link" target="_self" rel="noopener nofollow">local base</a> at 
-regular space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
-We call  T1 if TFES hold:<br>
-<br>
-<br>
-<br>all finite sets are closed
-<br>all cofinite sets are open
-<br>
-T1 space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
-We call  Hausdorff if TFES hold:<br>
-<br> are <a data-href="separated by neighbourhoods" href="math\separated-by-neighbourhoods.html" class="internal-link" target="_self" rel="noopener nofollow">separated by neighbourhoods</a>
-<br>
-<br>
-<br>
-Hausdorff space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
-We call  completely regular if TFES hold:<br>
-<br> are <a data-href="separated by a continuous function" href="math\separated-by-a-continuous-function.html" class="internal-link" target="_self" rel="noopener nofollow">separated by a continuous function</a>
-<br> <a data-href="continuous" href="math\continuous.html" class="internal-link" target="_self" rel="noopener nofollow">continuous</a>  s.t. 
-completely regular space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
+completely normal space<br>See <a data-tooltip-position="top" aria-label="Math/Urysohn lemma" data-href="Math/Urysohn lemma" href="math\urysohn-lemma.html" class="internal-link" target="_self" rel="noopener nofollow">Urysohn lemma</a><br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
 We call  completely Hausdorff if TFES hold:<br>
 <br> are <a data-href="separated by a continuous function" href="math\separated-by-a-continuous-function.html" class="internal-link" target="_self" rel="noopener nofollow">separated by a continuous function</a>
 <br> <a data-href="continuous" href="math\continuous.html" class="internal-link" target="_self" rel="noopener nofollow">continuous</a>  s.t. 
-completely Hausdorff space<br>See <a data-tooltip-position="top" aria-label="Math/Urysohn lemma" data-href="Math/Urysohn lemma" href="math\urysohn-lemma.html" class="internal-link" target="_self" rel="noopener nofollow">Urysohn lemma</a><br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
-We call  T2 if TFES hold:<br>
-<br> is a <a data-href="Hausdorff space" href="math\hausdorff-space.html" class="internal-link" target="_self" rel="noopener nofollow">Hausdorff space</a> and a <a data-href="T0 space" href="math\t0-space.html" class="internal-link" target="_self" rel="noopener nofollow">T0 space</a>
-<br> is a <a data-href="Hausdorff space" href="math\hausdorff-space.html" class="internal-link" target="_self" rel="noopener nofollow">Hausdorff space</a> and a <a data-href="T1 space" href="math\t1-space.html" class="internal-link" target="_self" rel="noopener nofollow">T1 space</a>
-<br> is a <a data-href="Hausdorff space" href="math\hausdorff-space.html" class="internal-link" target="_self" rel="noopener nofollow">Hausdorff space</a>
-T2 space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
-We call  completely Hausdorff if TFES hold:<br>
-<br> are <a data-href="separated by a continuous function" href="math\separated-by-a-continuous-function.html" class="internal-link" target="_self" rel="noopener nofollow">separated by a continuous function</a>
-<br> <a data-href="continuous" href="math\continuous.html" class="internal-link" target="_self" rel="noopener nofollow">continuous</a>  s.t. 
-completely Hausdorff space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
-We call  T1 if TFES hold:<br>
-<br>
-<br>
-<br>all finite sets are closed
-<br>all cofinite sets are open
-<br>
-T1 space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
-We call  normal if TFES hold:<br>
-<br> are <a data-href="separated by neighbourhoods" href="math\separated-by-neighbourhoods.html" class="internal-link" target="_self" rel="noopener nofollow">separated by neighbourhoods</a>
-<br>
-<br>
-<br>
-<br>
-normal space<br>See <a data-tooltip-position="top" aria-label="Math/Urysohn lemma" data-href="Math/Urysohn lemma" href="math\urysohn-lemma.html" class="internal-link" target="_self" rel="noopener nofollow">Urysohn lemma</a><br>Non-standard notation 
+completely Hausdorff space<br>See <a data-tooltip-position="top" aria-label="Math/Urysohn lemma" data-href="Math/Urysohn lemma" href="math\urysohn-lemma.html" class="internal-link" target="_self" rel="noopener nofollow">Urysohn lemma</a><br>Non-standard notation 
 In standard notation, completely normal space means <a data-href="hereditarily normal space" href="math\hereditarily-normal-space.html" class="internal-link" target="_self" rel="noopener nofollow">hereditarily normal space</a>
 <br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
 We call  completely normal if TFES hold:<br>
 <br> are <a data-href="separated by a continuous function" href="math\separated-by-a-continuous-function.html" class="internal-link" target="_self" rel="noopener nofollow">separated by a continuous function</a>
 <br> <a data-href="continuous" href="math\continuous.html" class="internal-link" target="_self" rel="noopener nofollow">continuous</a>  s.t. 
 <br> is a <a data-href="normal space" href="math\normal-space.html" class="internal-link" target="_self" rel="noopener nofollow">normal space</a> (by <a data-href="Urysohn lemma" href="math\urysohn-lemma.html" class="internal-link" target="_self" rel="noopener nofollow">Urysohn lemma</a>)
-completely normal space]]></description><link>math\relationships-between-separation-axioms.html</link><guid isPermaLink="false">Math/Relationships between separation axioms.canvas</guid><pubDate>Mon, 24 Mar 2025 16:19:14 GMT</pubDate></item><item><title><![CDATA[Relationships between set separation]]></title><description><![CDATA[ 
+completely normal space<br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
+We call  T1 if TFES hold:<br>
+<br>
+<br>
+<br>all finite sets are closed
+<br>all cofinite sets are open
+<br>
+T1 space]]></description><link>math\relationships-between-separation-axioms.html</link><guid isPermaLink="false">Math/Relationships between separation axioms.canvas</guid><pubDate>Sun, 13 Apr 2025 19:09:43 GMT</pubDate></item><item><title><![CDATA[Relationships between set separation]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
 Let .<br>
 Then each statement implies the next:<br>
@@ -7028,7 +6961,7 @@ Given a <a data-tooltip-position="top" aria-label="Supervised learning" data-hre
  <br>Let  be a <a data-href="Jordan curve" href="math\jordan-curve.html" class="internal-link" target="_self" rel="noopener nofollow">Jordan curve</a><br>
 Let  be <a data-href="holomorphic" href="math\holomorphic.html" class="internal-link" target="_self" rel="noopener nofollow">holomorphic</a>.<br>
 Suppose  on <br>
-Then  and  have same number of zeroes in ]]></description><link>math\rouche&apos;s-theorem.html</link><guid isPermaLink="false">Math/Rouche&apos;s theorem.md</guid><pubDate>Tue, 18 Feb 2025 13:39:37 GMT</pubDate></item><item><title><![CDATA[saturated]]></title><description><![CDATA[ 
+Then  and  have same number of zeroes in ]]></description><link>math\rouche's-theorem.html</link><guid isPermaLink="false">Math/Rouche's theorem.md</guid><pubDate>Tue, 18 Feb 2025 13:39:37 GMT</pubDate></item><item><title><![CDATA[saturated]]></title><description><![CDATA[ 
  <br>Let  be <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>s.<br>
 Let  and .<br>
 We say that  is saturated w.r.t.  if TFES hold:<br>
@@ -7557,9 +7490,12 @@ Now if , we have <br>
 Hence <br>
 Now <br>
 Thus ]]></description><link>math\steepest-descent-algorithm.html</link><guid isPermaLink="false">Math/Steepest descent algorithm.md</guid><pubDate>Wed, 12 Mar 2025 11:20:32 GMT</pubDate></item><item><title><![CDATA[Steepest descent on quadratic form]]></title><description><![CDATA[ 
- <br>Follow the notation in <a data-href="Gradient descent on quadratic form" href="math\gradient-descent-on-quadratic-form.html" class="internal-link" target="_self" rel="noopener nofollow">Gradient descent on quadratic form</a>.<br>
-We wish to use the <a data-tooltip-position="top" aria-label="Gradient descent" data-href="Gradient descent" href="math\gradient-descent.html" class="internal-link" target="_self" rel="noopener nofollow">Steepest descent algorithm</a>, with<br>
-<br>
+ <br>Let <br>
+Note that we have<br>
+<br> by  symmetric
+<br> is the Hessian matrix of 
+<br>We do <a data-href="Gradient descent on quadratic form" href="math\gradient-descent-on-quadratic-form.html" class="internal-link" target="_self" rel="noopener nofollow">Gradient descent on quadratic form</a>  with the <a data-href="Steepest descent algorithm" href="math\steepest-descent-algorithm.html" class="internal-link" target="_self" rel="noopener nofollow">Steepest descent algorithm</a>:  given by minimizing <br>
+We have<br>
 <br>
 <br>
 <br>
@@ -7590,7 +7526,7 @@ Then<br>
 <br>
 <br>
 <br>
-]]></description><link>math\steepest-descent-on-quadratic-form.html</link><guid isPermaLink="false">Math/Steepest descent on quadratic form.md</guid><pubDate>Wed, 12 Mar 2025 11:20:32 GMT</pubDate></item><item><title><![CDATA[Step approximation of Riemann-integrable functions]]></title><description><![CDATA[ 
+]]></description><link>math\steepest-descent-on-quadratic-form.html</link><guid isPermaLink="false">Math/Steepest descent on quadratic form.md</guid><pubDate>Sat, 12 Apr 2025 14:11:46 GMT</pubDate></item><item><title><![CDATA[Step approximation of Riemann-integrable functions]]></title><description><![CDATA[ 
  <br>Let .<br>
 Then  step function  s.t.  and .<br>
 Constructive: Darboux lower sums]]></description><link>math\step-approximation-of-riemann-integrable-functions.html</link><guid isPermaLink="false">Math/Step approximation of Riemann-integrable functions.md</guid><pubDate>Mon, 24 Mar 2025 16:19:14 GMT</pubDate></item><item><title><![CDATA[Strictly diagonally dominant matrix]]></title><description><![CDATA[ 
@@ -7728,30 +7664,30 @@ Then<br>
 <br>
 <br>if  and , then we have  and 
 ]]></description><link>math\summary-of-properties-of-lebesgue-integral.html</link><guid isPermaLink="false">Math/Summary of properties of Lebesgue integral.md</guid><pubDate>Thu, 27 Mar 2025 08:53:58 GMT</pubDate></item><item><title><![CDATA[Sup, inf, limsup, liminf]]></title><description><![CDATA[ 
- Naturals to power setReals to complete latticelimsup[[topological space]] to complete latticeMetric space to complete latticeNaturals to complete latticeNaturals to realslimsupliminfliminflimsupliminflimsupliminflimsupliminflimsupliminf<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
+ Naturals to power setReals to complete lattice[[topological space]] to complete latticeMetric space to complete latticeNaturals to complete latticeNaturals to realslimsuplimsupliminfliminflimsupliminflimsupliminflimsupliminflimsupliminf<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Let  be a metric space.<br>
 Let  be a subspace of .<br>
 Let  be a complete lattice.<br>
 Let  be a function.<br>
-Let  be a limit point of .<br><br><br> <br> <br><br><br><br><br><br><br>
+Let  be a limit point of .<br> <br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Let  be a <a data-href="topological space" href="math\topological-space.html" class="internal-link" target="_self" rel="noopener nofollow">topological space</a>.<br>
+Let  be a subspace of .<br>
+Let  be a complete lattice.<br>
+Let  be a function.<br>
+Let  be a limit point of .<br><br><br> <br> <br><br><br><br>
 <br>When removing elements from a set, the sup can only decrease while inf can only increase, so limsup and liminf are asking "if we keep shrinking towards the limit point, what are the sup and inf of the remaining?"
 <br>Limsup is the max of subsequential limits, and liminf is the min of that
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Let  be the extended reals.<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br>Let  be an ordered set and .<br>
+Let  be the set of upper bounds for .<br>
+Let  be the set of lower bounds for .<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Let  be the extended reals.<br>
 Give  the subspace topology from .<br>
 Let  be a complete lattice.<br>
 Let  be a sequence: .<br>
-Note that  is a limit point of <br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br>Let  be an ordered set and .<br>
-Let  be the set of upper bounds for .<br>
-Let  be the set of lower bounds for .<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Let  be the extended reals.<br>
+Note that  is a limit point of <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Let  be the extended reals.<br>
 Give  the subspace topology from .<br>
 Let  be a set and .<br>
 Note that  is a complete lattice partially ordered by .<br>
 Let  be a sequence: .<br>
-Note that  is a limit point of <br><br><br><br><br><br><br><br><br><br><br><br>Let .<br>
-Let  be a subspace of .<br>
-Let  be a complete lattice.<br>
-Let  be a function.<br>
-Let  be a limit point of .<br><br><br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Let  be the extended reals.<br>
+Note that  is a limit point of <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Let  be the extended reals.<br>
 Give  the subspace topology from .<br>
 Let  be <br>
 Let  be a sequence: .<br>
@@ -7759,15 +7695,15 @@ Note that  is a limit point of <br><br>
 For each , let <br>
 Then we can define<br>
 <br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br>
 We can define  by<br>
 ,<br>
 and define  by<br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Let  be a metric space.<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>Let .<br>
 Let  be a subspace of .<br>
 Let  be a complete lattice.<br>
 Let  be a function.<br>
-Let  be a limit point of .<br><br> <br> <br><br><br><br><br><br><br><br><br><br><br><br> ]]></description><link>math\sup,-inf,-limsup,-liminf.html</link><guid isPermaLink="false">Math/Sup, inf, limsup, liminf.canvas</guid><pubDate>Thu, 03 Apr 2025 15:50:11 GMT</pubDate></item><item><title><![CDATA[Supervised learning]]></title><description><![CDATA[ 
+Let  be a limit point of .<br><br><br><br><br><br><br><br><br> <br><br><br> ]]></description><link>math\sup,-inf,-limsup,-liminf.html</link><guid isPermaLink="false">Math/Sup, inf, limsup, liminf.canvas</guid><pubDate>Thu, 03 Apr 2025 17:16:47 GMT</pubDate></item><item><title><![CDATA[Supervised learning]]></title><description><![CDATA[ 
  <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
 Let  be a <a data-href="measurable space" href="math\measurable-space.html" class="internal-link" target="_self" rel="noopener nofollow">measurable space</a>, called the input space<br>
 Let  be a <a data-href="measurable space" href="math\measurable-space.html" class="internal-link" target="_self" rel="noopener nofollow">measurable space</a>, called the output space.<br>
@@ -7997,7 +7933,17 @@ Then <br>
 Then by subadditivity and <a data-href="Hoeffding's inequality" href="math\hoeffding's-inequality.html" class="internal-link" target="_self" rel="noopener nofollow">Hoeffding's inequality</a>,  Take .<br>
 Then  by <br>
 Hence .<br>
-That is, It follows that if  then learning is possible.]]></description><link>math\uniform-deviation.html</link><guid isPermaLink="false">Math/uniform deviation.md</guid><pubDate>Sun, 09 Mar 2025 18:47:13 GMT</pubDate></item><item><title><![CDATA[uniformly bounded]]></title><description><![CDATA[ 
+That is, It follows that if  then learning is possible.]]></description><link>math\uniform-deviation.html</link><guid isPermaLink="false">Math/uniform deviation.md</guid><pubDate>Sun, 09 Mar 2025 18:47:13 GMT</pubDate></item><item><title><![CDATA[Uniform distribution]]></title><description><![CDATA[ 
+ <br>Let  be a <a data-href="probability space" href="math\probability-space.html" class="internal-link" target="_self" rel="noopener nofollow">probability space</a>.<br>
+Let  with .<br>
+Let  be a <a data-tooltip-position="top" aria-label="random element" data-href="random element" href="math\random-element.html" class="internal-link" target="_self" rel="noopener nofollow">r.v.</a><br>
+Write  if  has a <a data-tooltip-position="top" aria-label="probability density function" data-href="probability density function" href="math\probability-density-function.html" class="internal-link" target="_self" rel="noopener nofollow">PDF</a> given by  on <br>
+In this case, we call  uniformly distributed over <br>
+Usually, we extend  by zero to , thus <br>Note that<br>
+<br>
+<br>
+<br>
+]]></description><link>math\uniform-distribution.html</link><guid isPermaLink="false">Math/Uniform distribution.md</guid><pubDate>Wed, 09 Apr 2025 10:12:25 GMT</pubDate></item><item><title><![CDATA[uniformly bounded]]></title><description><![CDATA[ 
  <br>Let  be open and .<br>
 We call  uniformly bounded if<br>
 <br>
@@ -8177,7 +8123,7 @@ We have<br>
  <br>Let  and  be conjugate exponents.<br>
 Then <br>
 <br>"" iff .
-]]></description><link>math\young&apos;s-inequality.html</link><guid isPermaLink="false">Math/Young&apos;s inequality.md</guid><pubDate>Wed, 05 Feb 2025 10:12:45 GMT</pubDate></item><item><title><![CDATA[Zeros of entire finite order functions]]></title><description><![CDATA[ 
+]]></description><link>math\young's-inequality.html</link><guid isPermaLink="false">Math/Young's inequality.md</guid><pubDate>Wed, 05 Feb 2025 10:12:45 GMT</pubDate></item><item><title><![CDATA[Zeros of entire finite order functions]]></title><description><![CDATA[ 
  <br>Let  be entire with order of growth at most .<br>
 Then<br>
 <br>, that is  large 
@@ -8188,7 +8134,200 @@ We have<br>
 <br>The formula  extends continuously to , converging everywhere
 <br>The extension  is <a data-href="holomorphic" href="math\holomorphic.html" class="internal-link" target="_self" rel="noopener nofollow">holomorphic</a>
 <br> 
-]]></description><link>math\zeta-function.html</link><guid isPermaLink="false">Math/Zeta function.md</guid><pubDate>Tue, 18 Feb 2025 13:39:37 GMT</pubDate></item><item><title><![CDATA[MOC]]></title><description><![CDATA[<a class="tag" href="?query=tag:unfinished" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#unfinished</a> <a class="tag" href="?query=tag:unfinished" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#unfinished</a> <a class="tag" href="?query=tag:unfinished" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#unfinished</a> <a class="tag" href="?query=tag:unfinished" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#unfinished</a> <a class="tag" href="?query=tag:unfinished" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#unfinished</a> <a class="tag" href="?query=tag:incomplete" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#incomplete</a> 
+]]></description><link>math\zeta-function.html</link><guid isPermaLink="false">Math/Zeta function.md</guid><pubDate>Tue, 18 Feb 2025 13:39:37 GMT</pubDate></item><item><title><![CDATA[Python matplotlib]]></title><description><![CDATA[ 
+ <br><br>import matplotlib.pyplot as plt
+plt.plot(x,y,linespec,label='f')  # plots y against x given size(x)=size(y)
+plt.scatter(x,y,color='r',marker='x')  # plots points (x_n,y_n) given size(x)=size(y)
+plt.hist(x, bins=&lt;num&gt;)  # histogram
+plt.imshow(image, cmap=?) # actually plots the pixels, choose ? to be matplotlib.cm.binary, matplotlib.
+
+plt.savefig('name.png')  # saves figure as file
+
+Curve template:
+t = linspace()
+x = f(t)
+y = g(x)
+plot(x, y)
+
+Scatter template:
+p = np.array([[x1,y1],[x2,y2],[x3,y3]])
+plt.scatter(p[:,0],p[:,1],color='b',marker='o')
+
+Plot options:  % put after the plt.plot(x,y) command
+plt.xlim([a,b])
+plt.ylim([c,d])
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Title')
+plt.legend()  # show legend according to the label argument in plt.plot
+# plt.legend(loc='best')  gives best location
+
+Subplot:
+fig = plt.figure(figsize=[a,b])  # inches
+fig.add_subplot(m,n,1); plt.plot(...)
+fig.add_subplot(m,n,2); plt.plot(...)
+fig.add_subplot(m,n,[3,4]); plt.plot(...)
+<br><br>from mpl_toolkits.mplot3d import Axes3D
+u = linspace()
+v = linspace()
+(U,V) = np.meshgrid(u,v)
+X = f(U,V)
+Y = g(U,V)
+Z = h(U,V)
+mesh(X,Y,Z)
+fig = plt.figure()
+ax = Axes3D(fig)
+ax.plot_surface(X,Y,Z)
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+]]></description><link>coding\python-matplotlib.html</link><guid isPermaLink="false">Coding/Python matplotlib.md</guid><pubDate>Sat, 12 Apr 2025 15:52:39 GMT</pubDate></item><item><title><![CDATA[Python scikit-learn]]></title><description><![CDATA[ 
+ <br><br>from sklearn.linear_model import LinearRegression, Ridge, LogisticRegression 
+X = &lt;data&gt;  # NO bias, aka column of ones!
+y = &lt;targets&gt;
+model = ?  # Replace ? with
+# LinearRegression()
+# Ridge()
+# LogisticRegression(solver='newton-cg',penalty='none')
+model.fit(X,y)
+m = model.coef_   # array([theta1, theta2, ...])
+c = model.intercept_   # theta0
+x = &lt;input&gt;
+y_pred = model.predict(x)
+model.predict([...])  # can pointwise perdict an array of test data
+<br><br>
+<br>predictor: 
+<br>Find  by minimizing 
+<br><br>
+<br>predictor: 
+<br>Find  by minimizing 
+<br><br>
+<br>predictor: 
+<br>For binary classification,  models probability of class 
+
+<br>Predict 
+<br>Predict 
+
+
+<br> is the decision boundary
+<br>Find  by minimizing 
+<br><br>from sklearn.preprocessing import StandardScaler, PolynomialFeatures
+X = &lt;data&gt;
+y = &lt;targets&gt;
+prep = ?  # Replace ? with 
+# StandardScaler()
+# PolynomialFeatures(degree=deg, include_bias=bool)
+Xp = prep.fit_transform(X)
+model = &lt;...&gt;
+x = &lt;input&gt;
+xp = prep.transform(x)
+y_pred = model.predict(xp)
+<br><br>Goal: avoid the zig-zag problem in a skewed problem during gradient descent<br>
+Solution: rescale the features (columns of ) by <br>
+<br>prep = StandardScaler()
+<br>Xp = prep.fit_transform(X) computes  and  of X, then rescale X accordingly
+<br>xp = perp.transform(x) rescale x using the same  and  as before
+<br><br>Goal: Given data set , predict using a polynomial model<br>
+Solution: artificially give features <br>
+<br>`prep = PolynomialFeatuers(degree=n, include_bias=&lt;True/False&gt;)
+<br>Xp=prep.fit_transform(X) computes the matrix above with/without the column of ones depending on whether include_bias was true/false
+<br>model = LinearRegression() use linear regression on the new matrix, remembe to set include_bias to false for this
+<br>model.fit(Xp,y)
+<br><br>from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test = train_test_split(data, target)
+# reserves 25% of data for testing
+<br><br><br>frmo sklearn.metrics import mean_squared_error
+mean_squard_error(y,y_pred)  # (1/n)sum(y[i]-y_pred[i])^2
+y_mean = np.mean(y)*np.ones(len(y))
+coef_det = mean_squared_error(y_pred,y_mean)/mean_squared_error(y,y_mean)  # coefficient of determination
+<br><br>scikit learn has multilayer perceptron (MLP) neural networks:<br>from sklearn.neural_network import MLPClassifier, MLPRegressor
+X = &lt;data&gt;  # input neuron without bias: no column of ones!
+y = &lt;targets&gt;
+model = ?  # Replace ? with
+# MLPClassifier(hidden_layer_sizes=[m1,...,mM], activation='...',solver='...') for binary classification
+# MLPRegressor(hidden_layer_sizes=[m1,...,mM], activation='...',solver='...') for regression
+	# hidden_layer_sizes: neurons per hidden layer
+	# activation: 'relu', 'tanh', 'logistic'
+	# solver: 'sgd'
+model.fit(X,y)
+m = model.coefs_   # array of all the weights
+c = model.intercepts_   # array of biases
+x = &lt;input&gt;
+y_pred = model.predict(x)
+model.predict([...])  # can pointwise perdict an array of test data
+
+<br><br>from sklearn.datasets import load_iris, load_digits, 
+ds = load_iris()
+ds.keys()  # ['data', 'target', 'target_names', 'DESCR', 'feature_names', 'filename']
+df = pd.DataFrame(ds['data'], columns=ds['feature_names'])
+]]></description><link>coding\python-scikit-learn.html</link><guid isPermaLink="false">Coding/Python scikit-learn.md</guid><pubDate>Sun, 13 Apr 2025 18:58:03 GMT</pubDate></item><item><title><![CDATA[Python tensorflow]]></title><description><![CDATA[ 
+ <br><br>import tensorflow as tf
+<br><br><br>from tensorflow import keras
+keras.layers.Dense(&lt;num&gt;, activation='...') # adds a dense layer, i.e. fully connected neurons
+	# &lt;num&gt;: number of neurons
+	# activation: 'relu', 'tanh', 'logistic', nothing for no activation function (usually at output layer)
+keras.layers.Flatten(input_shape=[x,y]) # adds a flattens layer: flattens a 2D array into a 1D array, useful for images
+keras.layers.Conv2D(filters=256, kernel_size=3, strides=1, activation='...', padding='...')  # adds a convolutional layer
+	# filters: number of feature maps
+	# kernel_size: n by n filters
+	# strides: number of pixels shifted per move of the filters
+	# activation: 'relu', 'tanh', 'logistic'
+	# padding: 'same', 'valid'
+		# same: pads ceil(image/strides) zero-pixels along each direction, when odd add one in the end
+		# valid: no padding, ignore neurons when not enough to apply filter
+keras.layers.MaxPooling2D(m,n)  # adds a pooling layer using max pooling, condenses each m by n rectangle into 1 neuron according to their max
+<br><br>from tensorflow import keras
+model = keras.models.Sequential([&lt;layer1&gt;, &lt;layer2&gt;, ...])  # Constructs the framework of a model
+model.add(&lt;layer&gt;)  # Adds &lt;layer&gt; to model
+
+model.summary() # Gives summary of a model
+layers = model.layers # array of all layers
+hidden1 = layers[1]
+(w,b) = hidden1.get_weights()
+
+model.compile(loss='...',optimizer='...')  # Specifies how the model finds the weights
+	# loss: 'mean_squared_error', 'binary_crossentropy'
+	# optimizer: 'sgd'
+
+X = &lt;data&gt;
+y = &lt;targets&gt;
+# checkpoint_cb = keras.callbacks.ModelCheckpoint("cp_cb.h5)
+history = model.fit(X,y,epochs=100) # optionally add callbacks=[checkpoint_cb] to save checkpoints
+pd.DataFrame(history.history).plot()  # useful for plotting the mean error
+x = &lt;input&gt;
+y_pred = model.predict(x)
+model.evaluate(X_test, y_test) 
+model.save("filename.h5")  # saves in HDF5 format
+model = keras.models.load_model("filename.h5")  # loads model
+<br><br>from tensorflow import keras
+model = keras.models.Sequential()
+model.add(keras.layers.Flatten(input_shape=[x,y]))  # for image data
+model.add(keras.layers.Dense(300,activation='relu'))
+model.add(keras.layers.Dense(100,activation='relu'))
+model.add(keras.layers.Dense(1))
+<br><br>from tensorflow import keras
+model = keras.models.Sequential([
+	keras.layers.Flatten(input_shape=[x,y])  # for image data
+	keras.layers.Dense(300,activation='relu')
+	keras.layers.Dense(100,activation='relu')
+	keras.layers.Dense(1,activation='sigmoid')
+	])
+<br><br>from tensorflow import keras
+model = keras.models.Sequential([
+	keras.layers.Conv2D(64,7,activation="relu",padding="same",input_shape=[28,28,1]),
+	keras.layers.MaxPooling2D(2,2),
+	keras.layers.Conv2D(128,3,activation="relu",padding="same"),
+	keras.layers.Conv2D(128,3,activation="relu",padding="same"),
+	keras.layers.MaxPooling2D(2,2),
+	keras.layers.Conv2D(256,3,activation="relu",padding="same"),
+	keras.layers.Conv2D(256,3,activation="relu",padding="same"),
+	keras.layers.MaxPooling2D(2,2),
+	keras.layers.Flatten(),
+	keras.layers.Dense(128,activation="relu"),
+	keras.layers.Dense(64,activation="relu"),
+	keras.layers.Dense(1,activation="sigmoid")
+])
+]]></description><link>coding\python-tensorflow.html</link><guid isPermaLink="false">Coding/Python tensorflow.md</guid><pubDate>Sun, 13 Apr 2025 09:47:49 GMT</pubDate></item><item><title><![CDATA[MOC]]></title><description><![CDATA[<a class="tag" href="?query=tag:unfinished" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#unfinished</a> <a class="tag" href="?query=tag:unfinished" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#unfinished</a> <a class="tag" href="?query=tag:unfinished" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#unfinished</a> <a class="tag" href="?query=tag:unfinished" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#unfinished</a> <a class="tag" href="?query=tag:unfinished" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#unfinished</a> <a class="tag" href="?query=tag:incomplete" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#incomplete</a> 
  <br><br>
 <br><a data-href="Quasi-conformal geometry" href="math\quasi-conformal-geometry.html" class="internal-link" target="_self" rel="noopener nofollow">Quasi-conformal geometry</a>
 <br><a data-href="Lehto and Virtanen" href="math\lehto-and-virtanen.html" class="internal-link" target="_self" rel="noopener nofollow">Lehto and Virtanen</a>
@@ -8239,7 +8378,7 @@ We have<br>
 <br><a data-href="Splitting method" href="math\splitting-method.html" class="internal-link" target="_self" rel="noopener nofollow">Splitting method</a>
 <br><a data-href="The eigenvalue problem" href="math\the-eigenvalue-problem.html" class="internal-link" target="_self" rel="noopener nofollow">The eigenvalue problem</a>
 <br><br>
-<br><a data-href="Decision theory" href="math\decision-theory.html" class="internal-link" target="_self" rel="noopener nofollow">Decision theory</a>
+<br><a data-href="Math/Machine learning" href="math\machine-learning.html" class="internal-link" target="_self" rel="noopener nofollow">Math/Machine learning</a>
 <br><br>
 <br><a data-href="Reading group on folland" href="math\reading-group-on-folland.html" class="internal-link" target="_self" rel="noopener nofollow">Reading group on folland</a>
 <br><a data-tooltip-position="top" aria-label="Mathematical structures.canvas" data-href="Mathematical structures.canvas" href="math\mathematical-structures.html" class="internal-link" target="_self" rel="noopener nofollow">Mathematical structures</a>
@@ -8254,4 +8393,443 @@ We have<br>
 <br><a data-href="Python matplotlib" href="coding\python-matplotlib.html" class="internal-link" target="_self" rel="noopener nofollow">Python matplotlib</a>
 <br><a data-href="Python pandas" href="coding\python-pandas.html" class="internal-link" target="_self" rel="noopener nofollow">Python pandas</a>
 <br><a data-href="Python scikit-learn" href="coding\python-scikit-learn.html" class="internal-link" target="_self" rel="noopener nofollow">Python scikit-learn</a>
-]]></description><link>moc.html</link><guid isPermaLink="false">MOC.md</guid><pubDate>Sat, 22 Mar 2025 17:01:57 GMT</pubDate></item></channel></rss>
+<br><a data-href="Python tensorflow" href="coding\python-tensorflow.html" class="internal-link" target="_self" rel="noopener nofollow">Python tensorflow</a>
+<br><br>
+<br><a data-href="MATH3330" href="math\math3330.html" class="internal-link" target="_self" rel="noopener nofollow">MATH3330</a>
+]]></description><link>moc.html</link><guid isPermaLink="false">MOC.md</guid><pubDate>Sun, 13 Apr 2025 07:50:22 GMT</pubDate></item><item><title><![CDATA[MATLAB]]></title><description><![CDATA[ 
+ <br><br>pi i j inf ans 
+<br><br>+ - * / ^
+=
+<br><br>sin(x) cos(x) tan(x) sec(x) cot(x) csc(x) asin(x) acos(x) atan(x) 
+sinh(x) cosh(x) tanh(x) asinh(x) acosh(x) atanh(x) 
+exp(x) log(x) log10(x) log2(x) sqrt(x)
+abs(z) angle(z) conj(z) real(z) imag(z)
+round(x) floor(x) ceil(x) fix(x)
+mod(a,m)==floor(a/m)*m % a mod m
+factorial(n) nchoosek(n,k)
+<br><br>
+<br>Valid variable names must start with letter, contain only letter,digit,underscores, and cannot be a reserved keyword
+<br>Case sensitive
+<br><br>a = [a1, a2, a3]<br>
+A = [a11, a12; a21, a22]<br>
+a(i) <br>
+a([i1, i2, i3]) <br>
+A(i,j) <br>
+A([i1, i2], [j1, j2, j3]) <br>
+end  the last index<br>
+:  [1,...,end]<br>
+<br>Assignment of multiple elements work as long as dimensions match
+
+<br>a(j)=[] removes the entry 
+<br>A(:,j)=[] removes the -th column
+
+
+<br>Whenever possible, MATLAB will extend the array size in order to assign an object there<br>
+a = [1,...,10] and a(20)=20 will give you a 1x20 array
+<br><br>zeros(m,n) ones(m,n) eye(m,n)
+zeros(n) ones(n) eye(n) magic(n) hilb(n)
+diag(v,k)
+diag(A,k)
+tril(A,k)
+triu(A,k)
+
+start:step:stop  % arithmetic sequence from &lt;start&gt; to &lt;stop&gt; inclusive with &lt;step&gt; as common difference
+linspace(start,stop,step)  % array of num evenly spaced points from start to stop inclusive
+[X,Y] = meshgrid(x,y)  % X is length(y) rows of x and Y is length(x) many columns of y. More precisely: X_ij=x_j,  Y_ij=y_i, size(X)=(length(x),length(y)), size(Y)=(length(y),length(x))
+
+length(v)
+size(A)
+numel(A)
+
+repelem(v,k)
+repelem(v,[k1,...,kn])
+repelem(A,m,n)
+repmat(A,m,n)
+repmat(A,n)
+
+fliplr(A) flipud(A) 
+rot90(A,k)
+
+paddata(A,m)
+trimdata(A,m)
+resize(A,m)
+reshape(A,sz)  (must have prod(sz)=numel(A), use [] on one arguement to auto-calculate dimension)
+
+blkdiag(A1,...,An)
+horzcat(A1,...,An) == [A1,...,An]
+vertcat(A1,...,An) == [A1;...;An]
+
+dot(v,w)
+cross(v,w)
+
+A+B A-B A.*B A./B  % pointwise
+A+v A-v A.*v A./v  % each row/column of A will do the operation with v pointwise
+A+a A-a A.*a A./a  % each entry of A will do the operation with a pointwise
+a*A  % scalar multiplication
+A*B  % matrix multiplication, requires matching dimensions, alt: mtimes(A,B)
+A^n  % matrix power, requires square matrix, alt: mpower(A,n)
+A^(1/2)  % matrix square root, alt: sqrtm(A)
+A.'  % transpose, alt: transpose(A)
+A'  % conjugate transpose, alt: ctranspose(A)
+A\B  % solves AX=B, alt: mldivide(A,B))
+A/B  % solves YB=A, alt: mrdivide(A,B)
+linsolve(A,B)  % solves AX=B
+expm(A)
+logm(A)
+det(A)
+trace(A)
+inv(A)
+adjoint(A)  % classical adjoint
+rref(A)
+rank(A)
+null(A)  % orthonormal basis for null space
+null(A,'r')  % rational orthonormal basis
+orth(A)  % orthonormal basis for column space
+spy(A)  % visualize the pattern of nonzero entries of A
+
+
+v = eig(A)  % vector of eigenvalues of A
+[V,D] = eig(A)  % diagonalization
+eigs(A)  % vector of eigenvalues of A ordered by descending absolute values
+eigs(A,k)  % first k elements of eigs(A)
+v = svd(A)  % vector of singular values of A
+[U,D,V] = svd(A)  % singular value decomposition
+norm(A)  % spectral norm max(svd(A))
+cond(A)  % conditional number max(svd(A))/min(svd(A))
+
+[V,D] = eig(A)  % D=inv(V)AV if diagonalizable
+[L,U,P] = lu(A)  % PA=LU
+[Q,R] = qr(A)  % A=QR
+[Q,R,P] = qr(A)  % PA=QR
+U = chol(A)  % A=U'U
+L = chol(A,'lower')  % A=LL'
+[U,D,V] = svd(A)  % A=UVD'
+
+istril(A)
+istriu(A)
+isdiag(A)
+issymmetric(A)
+ishermitian(A)
+
+<br>Most functions in <a data-href="#Math functions" href="about:blank#Math_functions" class="internal-link" target="_self" rel="noopener nofollow">Math functions</a> works on arrays pointwisely<br><br>diary mydiary
+diary off
+diary on
+type diary
+
+clear  % clears all variable
+clear var % clears the variable var
+who  % list all variables
+who a* % list variable starting with a
+whos % list all variable names, size, type
+whos var % list the name, size, type of var
+<br><br>
+<br>int8, int16, int32, int64 (signed integers, )
+<br>uint8, uint16, uint32, uint64 (unsigned integers: )
+<br>single (32bit decimal)
+<br>double (64bit decimal, default type) 
+<br>true, false
+<br>char
+<br>a string is an array of char<br><br>disp(a) disp(v) disp('str')
+[str1, str2, ...] % concatenates strings
+{str1, str2, ...} % multiline string
+&lt;dtype&gt;(&lt;var&gt;)  % converts var into type dtype
+num2str(&lt;num&gt;)
+logical(&lt;num&gt;)  % true iff num is nonzero
+logical(&lt;arr&gt;)  % true iff all entries are true
+% logical('') and logical([]) return false
+% logical(NaN) throws an error
+any(v)  % true if at least one true
+any(A)  % returns row vector of any() of columns of A, that is [any(A1), any(A2),...]
+all(v)  % true if all entries true
+all(A)  % returns row vector of all() of columns of A, that is [all(A1), all(A2),...]
+
+&lt; &lt;= &gt; &gt;= == ~=  &amp; relational operator
+&amp;&amp; || ~  &amp; logical operator
+
+v==a  % returns an array w with w_i=(v_i==a)
+A==B  % returns an matrix C with C_ij=(A_ij==B_ij)
+isequal(A,B) or logical(A==B) % returns true when A=B as matrices
+logical(A~=B)  % returns true when any entry is different
+~isequal(A,B) or ~logical(A==B)  % returns true when A not equal B as matrices
+
+find(v)  % returns all true entries
+find(v,n)  % returns the first n true entries
+find(v,n,'last')  % returns the last n true entries
+find(v==0)  % true entries of v==0, i.e. all zero entries
+find(v&gt;1)  % etc.
+
+if cond1  % forces logical(cond1) if var is not true/false
+	statement1a;
+	statement1b;
+elseif cond2
+	statement2a;
+	statement2b;
+else
+	statement3a;
+	statement3b
+end
+
+for k = &lt;arr&gt;
+	statement1;
+	statement2;
+end
+
+for &lt;cond&gt;
+	statement1;
+	statement2;
+end
+<br><br>plot(x,y,linespec) % plots y against x given size(x)=size(y)
+plot(x1,y1,linespec1,x2,y2,linespec2,...) % for multiple curves in same graph
+plot(X,Y)==plot(X(:,1),Y(:,1),X(:,2),Y(:,2),...) % plots columns of Y against columns of X
+plot(y,linespec) % plots y against 1:length(y)
+plot(Y) % plots columns of Y against 1:length(y)
+plot(z) % plot Im(z) against Re(z)
+quiver(X,Y,V,W)  % vector field, draws arrows from (X_ij, Y_ij) to ((X+V)_ij, (Y+W)_ij)
+
+With the same syntax as above, we have:
+loglog(x,y)  % log y against log x
+semilogx(x,y)  % y against log x
+semilogy(x,y)  % log y against x
+polarplot(theta,r)  % polar
+fill(x,y,&lt;color&gt;) % fill polygon (convex hull)
+bar(x,y) % bar graph, bar(y) gives one bar per element
+barh(x,y) % horizontal bar graph
+pie(x,{'label1','label2',...}) % pie chart, labels optional
+
+
+Curve template:
+t = linspace()
+x = f(t)
+y = g(x)
+plot(x, y)
+
+Vector field template: 
+x = linspace()
+y = linspace()
+[X,Y] = meshgrid(x,y)
+V = f(X,Y)
+W = g(X,Y)
+quiver(X,Y,V,W)
+
+Plot options:  % Put after the plot(x,y) command
+axis([a,b,c,d])  
+% or xlim([a,b]);ylim([c,d])
+% or axis square/equal
+xlabel('x')
+ylabel('y')
+title('Title')
+text(&lt;pos_x&gt;,&lt;pos_y&gt;,{'text', 'multiline'})
+legend('y=f(x)')
+grid on/off
+box on/off
+
+Line properties:  % replace plot(x,y) with this
+plot(x, y, 'ro:', ...
+	'LineWidth',3, ...
+	'MarkerEdgeColor','k', ...
+	'MarkerFaceColor',[.49 1 .63],...
+	'MarkerSize',12)
+
+Text options:  % replace any text function with this
+legend('y=f(x)',...
+	'FontSize', 16,...
+	'FontWeight', 'bold',...
+	'Color', 'r')
+
+Holding: % plots multiple in one graph
+hold on
+plot(...)
+plot(...)
+hold off
+
+Figures:
+fig = figure(n) % Initialize n-th figure window, automatically generates n if no args given
+plot(...) % plot on n-th figure window
+figure(n) % shows n-th figure window (if defined)
+saveas(fig, 'name', 'png')
+close n % close figure n window
+close all
+
+Subplot:
+figure
+subplot(m,n,1); plot(...)
+subplot(m,n,2); plot(...)
+subplot(m,n,[3,4]); plot(...)
+<br><br>plot3(x,y,z)  % joins the points (x_i, y_i, z_i)
+text(x(i), y(i), z(i), 'i-th point') % useful label
+mesh(X,Y,Z)  % parametric surface of z_ij as height function of (x_ij,y_ij)
+surf(X,Y,Z)  % mesh but solid face colors
+bar3(Z)  % 3D bar graph
+barh3(Z)  % 3D horizontal bar graph
+stem3(x,y,z)
+ribbon(t,z)
+waterfall(Z)
+
+
+3D curve template:
+t = linspace()
+x = f(t)
+y = g(t)
+z = h(t)
+plot3(x,y,z)
+
+3D surface template:
+u = linspace()
+v = linspace()
+[U,V] = meshgrid(u,v)
+X = f(U,V)
+Y = g(U,V)
+Z = h(U,V)
+mesh(X,Y,Z)
+
+Plot options:  % Put after the plot command
+axis([a,b,c,d,e,f])  
+% or xlim([a,b]);ylim([c,d]);zlim([e,f]) 
+% or axis square/equal
+xlabel('x')
+ylabel('y')
+zlabel('z')
+title('Title')
+text(&lt;pos_x&gt;,&lt;pos_y&gt;,{'text', 'multiline'})
+legend('y=f(x)')
+grid on/off
+box on/off
+view(&lt;azimuth&gt;, &lt;elevation&gt;)  % azimute = angle from -y axis to proj onto xy-plane, elevation = angle from xy plane to z axis
+% below are for surfaces only 
+shading &lt;shade&gt; % options: flat,faceted,interp  
+colormap &lt;map&gt;  % options: default,parula,turbo,hsv,hot,cool,spring,summer,autumn,winter,gray,bone,copper,pink,sky,abyss,jet,lines,colorcube,prism,flag,white
+colorbar
+
+Line properties:
+plot3(x, y, z, ...
+	'LineWidth',3, ...
+	'MarkerEdgeColor','k', ...
+	'MarkerFaceColor',[.49 1 .63],...
+	'MarkerSize',12)
+
+Surface properties:
+mesh(X,Y,Z, 'LineStyle', '--',...
+	'FaceColor', 'y',... 
+	'FaceAlpha', 1)
+
+Text properties:
+legend('y=f(x)',...
+	'FontSize', 16,...
+	'FontWeight', 'bold',...
+	'Color', 'r')
+
+
+]]></description><link>coding\matlab.html</link><guid isPermaLink="false">Coding/MATLAB.md</guid><pubDate>Wed, 19 Feb 2025 18:06:19 GMT</pubDate></item><item><title><![CDATA[MATLAB Symbolic Math Toolbox]]></title><description><![CDATA[ 
+ <br><br>sym(A)
+
+Now suppose A is a symbolic matrix
+
+colspace(A)  % basis for column space
+null(A)  % basis for null space
+]]></description><link>coding\matlab-symbolic-math-toolbox.html</link><guid isPermaLink="false">Coding/MATLAB Symbolic Math Toolbox.md</guid><pubDate>Sun, 26 Jan 2025 08:13:59 GMT</pubDate></item><item><title><![CDATA[Python]]></title><description><![CDATA[ 
+ <br><br>a = [a0, a1, a2]<br>
+a[i]<br>a.append(element)
+a.insert(index, element)
+a+b  # list concatenation
+<br><br>d = {'key1':val1, 'key2': val2} d['key1'] val1<br>list(d.keys())
+list(d.values())
+d['key_new'] = ['new', 'value']  # adds new entry
+del d['key']  # deletes existing entry
+]]></description><link>coding\python.html</link><guid isPermaLink="false">Coding/Python.md</guid><pubDate>Sat, 22 Feb 2025 16:47:57 GMT</pubDate></item><item><title><![CDATA[Python numpy]]></title><description><![CDATA[ 
+ <br><br>import numpy as np
+v = np.array(list)  # turns list into a numpy array
+v[[0,1]]  # first 2 entries
+v[start:stop]  # not including &lt;stop&gt;
+v[start:]  # until last entry
+v[:end]  # from the first entry
+v[:]  # all entries
+
+A = np.array([1,0],[0,1])  # 2D array is matrix
+A[i,j]  # returns i,j entry, zero-indexed
+A[[i1,i2],[j1,j2,j3]]  # etc.
+A[:,j]  # j-th column **AS AN ARRAY**, not column vector
+A[i,:]  # i-th row
+
+A.shape  # returns the dimension of the array, use A.shape[0/1] for row/col
+v.dtype  # returns the datatype
+v.astype(int)  # converts datatypes
+<br><br>import numpy as np
+np.random.rand()  # random number from uniform distribution
+np.random.randn(n)  # array of n random numbers
+np.zeros((2,3,4))  # 2x4x3 array of zeros
+np.ones((3,2))  # 3x2 array of zeros
+np.arange(n)  # same as np.array(range(n))
+np.linspace(start,stop,num)
+
+
+np.vstack((A,B))
+np.hstack((A,B))
+
+np.reshape(m,n)  # mxn matrix
+
+A+B A-B A*B A/B A**B  # pointwise
+np.sqrt(A) np.exp(A) np.log(A) np.abs(A) np.sign(A)  # pointwise
+A@B = np.dot(A,B)  # matrix multipication
+
+A.T = A.transpose() = np.transpose(A)  # transpose
+A.real  # real part
+A.sum() = np.sum(A)  # sum of entries
+A.min() = np.min(A)  # min of entries
+A.max() = np.max(A)  # max of entries
+A.std() = np.std(A)  # standard deviation
+A.mean() = np.mean(A)  # mean of all entries
+A.mean(axis=k)  # take mean of k-th index (outermost)
+A.mean(axis=0)  # array of means of columns
+A.mean(axis=1)  # array of means of rows
+
+from numpy.linalg import inv
+inv(A) = np.linalg.inv(A) # inverts matrix
+
+from numpy.linalg import norm
+norm(v) = np.linalg.norm(v) # 2-norm
+
+]]></description><link>coding\python-numpy.html</link><guid isPermaLink="false">Coding/Python numpy.md</guid><pubDate>Tue, 18 Feb 2025 13:39:37 GMT</pubDate></item><item><title><![CDATA[Python pandas]]></title><description><![CDATA[ 
+ <br><br>import pandas as pd
+vals = np.array(...)  # the values of the dataframe
+rows = [1,2,3,4]  # row names
+cols = ['a', 'b', 'c', 'd']  # column names
+df = pd.DataFrame(vals, index=rows, columns=cols)  # generates the dataframe
+
+data = {'a':[...], 'b':[...], 'c':[...]}
+df = pd.DataFrame(data)  # generates the dataframe with [0,1,2,...] as row names and data.keys() as column names
+df = pd.Dataframe(data, columns=['a','c'],index=[1,2,3,4])
+
+df = pd.read_csv('name.csv',sep=';')
+df = pd.read_csv('name.csv',delimiter='\t')
+df = pd.read_excel('name.xlsx')
+
+Now consider:
+df = pd.DataFrame({
+	'color': ['red','yellow'], 
+	'size': ['small', 'large']})
+df_onehot = pd.get_dummies(df)  # performs one-hot encoding
+# columns include color_red, color_yellow, size_small, size_large
+df_onecol = pd.get_dummies(df, columns=['color']) # performs one-hot encoding on some columns
+# columns include color_red, color_yellow
+
+df_all = pd.Dataframe.join(df1, df2)  # concatenates two dataframes
+<br><br>import pandas as pd
+
+df['key'] = df.key  # gives the column named "key"
+df.loc[i]  # gives the row named "i"
+
+
+display(df)  # displays the dataframe
+df.describe()  # gives a statistical summary, including count, mean, std, min, LQ, median, UQ, max
+df.head()  # gives first 5 rows only
+df.plot()  # plots the dataframe, each column against the row index
+df.plot.bar()  # bar graph
+<br><br>import pandas as pd
+
+df.dropna()  # deletes NaN entries
+df.fillna(num)  # converts all NaN to num\
+df.fillna({'col1':10, 'col2':20})  # converts all NaN in col1 to 10 etc.
+df.fillna(method='ffill')  # forward fill: progagates last valid data point
+df.fillna(method='bfill')  # backward fill: use next valid data point
+df.drop_duplicates()
+]]></description><link>coding\python-pandas.html</link><guid isPermaLink="false">Coding/Python pandas.md</guid><pubDate>Mon, 24 Feb 2025 18:43:43 GMT</pubDate></item></channel></rss>
